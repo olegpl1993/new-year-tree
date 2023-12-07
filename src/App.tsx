@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.scss";
+import { Canvas } from "@react-three/fiber";
+import Floor from "./components/Floor/Floor";
+import Tree from "./components/Tree/Tree";
+import { Environment, OrbitControls } from "@react-three/drei";
+import Box from "./components/Box/Box";
+import Floor2 from "./components/Floor2/Floor2";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <div className="app__wrapper">
+        <h1 className="app__title">New Year Tree</h1>
+        <div className="app__canvasWrapper">
+          <Canvas shadows>
+            <ambientLight intensity={1} />
+            <directionalLight
+              color="white"
+              position={[2, 2, 0]}
+              intensity={10}
+            />
+            <OrbitControls />
+            <Box position={[0, 2.5, 5]} rotation={[0, 0, 0]} />
+            <Box position={[5, 2.5, 0]} rotation={[0, 1.57, 0]} />
+            <Box position={[-5, 2.5, 0]} rotation={[0, 1.57, 0]} />
+            <Tree position={[0, 0, 0]} />
+            <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
+            <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />
+            <Environment preset="forest" background />
+          </Canvas>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
