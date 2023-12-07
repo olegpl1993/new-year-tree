@@ -1,0 +1,22 @@
+.app {
+  &__wrapper {
+    padding: 20px;
+    width: 1240px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(225, 225, 225);
+  }
+
+  &__title {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  &__canvasWrapper {
+    border: 1px solid green;
+    height: 700px;
+    width: 100%;
+  }
+}
