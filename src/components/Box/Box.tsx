@@ -8,10 +8,7 @@ interface Props {
 
 function Box(props: Props) {
   const { position, rotation } = props;
-  const texture = useLoader(
-    TextureLoader,
-    "./src/components/Box/assets/brick-6.jpg"
-  );
+  const texture = useLoader(TextureLoader, "./public/textures/brick-6.jpg");
 
   texture.wrapS = texture.wrapT = RepeatWrapping;
   texture.repeat.set(5, 5);
