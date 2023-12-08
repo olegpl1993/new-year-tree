@@ -23,6 +23,7 @@ function App() {
             <Box position={[0, 2.5, 5]} rotation={[0, 0, 0]} />
             <Box position={[5, 2.5, 0]} rotation={[0, 1.57, 0]} />
             <Box position={[-5, 2.5, 0]} rotation={[0, 1.57, 0]} />
+            <Box position={[0, 2.5, -5]} rotation={[0, 0, 0]} />
             <Tree position={[0, 0, 0]} />
             <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
             <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />

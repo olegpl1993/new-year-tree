@@ -8,10 +8,7 @@ interface Props {
 
 function Floor2(props: Props) {
   const { position, rotation } = props;
-  const texture = useLoader(
-    TextureLoader,
-    "./src/components/Floor2/assets/gypsum-7.jpg"
-  );
+  const texture = useLoader(TextureLoader, "./public/textures/gypsum-7.jpg");
 
   texture.wrapS = texture.wrapT = RepeatWrapping;
   texture.repeat.set(5, 5);

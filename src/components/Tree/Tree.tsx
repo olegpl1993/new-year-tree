@@ -9,7 +9,7 @@ function Tree(props: Props) {
   const { position } = props;
   const fbx = useLoader(
     FBXLoader,
-    "./src/components/Tree/assets/cgaxis_models_14_25.FBX"
+    "./public/tree/cgaxis_models_14_25.FBX"
   );
   return (
     <group position={position}>
