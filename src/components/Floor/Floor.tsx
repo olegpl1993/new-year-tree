@@ -10,7 +10,7 @@ function Floor(props: Props) {
   const { position, rotation } = props;
   const texture = useLoader(
     TextureLoader,
-    "./public/textures/wood-1.jpg"
+    "/textures/wood-1.jpg"
   );
 
   texture.wrapS = texture.wrapT = RepeatWrapping;
