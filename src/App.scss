@@ -10,12 +10,13 @@
   }
 
   &__title {
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
+    font-family: "Pacifico", cursive;
+    color: rgb(214, 82, 82);
   }
 
   &__canvasWrapper {
-    border: 1px solid green;
     height: 700px;
     width: 100%;
   }
