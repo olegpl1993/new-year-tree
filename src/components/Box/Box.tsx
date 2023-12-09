@@ -11,7 +11,7 @@ function Box(props: Props) {
   const texture = useLoader(TextureLoader, "/textures/brick-6.jpg");
 
   texture.wrapS = texture.wrapT = RepeatWrapping;
-  texture.repeat.set(5, 5);
+  texture.repeat.set(10, 5);
 
   return (
     <mesh position={position} rotation={rotation}>
