@@ -6,6 +6,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import Box from "./components/Box/Box";
 import Floor2 from "./components/Floor2/Floor2";
 import PointLight from "./components/PointLight/PointLight";
+import Sphere from "./components/Sphere/Sphere";
 
 function App() {
   return (
@@ -14,8 +15,11 @@ function App() {
         <h1 className="app__title">New Year Tree</h1>
         <div className="app__canvasWrapper">
           <Canvas shadows>
-            <ambientLight intensity={3} />
-            <PointLight position={[1.5, 3, 1.5]} intensity={30} point />
+            <ambientLight intensity={0.5} />
+            <PointLight position={[2, 4.5, 2]} color="red" intensity={30} point />
+            <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} point />
+            <PointLight position={[2, 4.5, -2]} color="yellow" intensity={30} point />
+            <PointLight position={[-2, 4.5, -2]} color="green" intensity={30} point />
 
             <OrbitControls
               target={[0, 1.5, 0]} // Задайте желаемую точку в сцене
@@ -27,6 +31,7 @@ function App() {
             />
 
             <Tree position={[0, 0, 0]} />
+            <Sphere position={[0.45, 1.45, 0.5]} color="blue" pointLight />
 
             <Box position={[0, 2.5, 5]} rotation={[0, 0, 0]} />
             <Box position={[5, 2.5, 0]} rotation={[0, 1.57, 0]} />
