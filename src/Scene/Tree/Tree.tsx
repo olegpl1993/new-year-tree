@@ -7,7 +7,7 @@ interface Props {
 
 function Tree(props: Props) {
   const { position } = props;
-  const fbx = useLoader(FBXLoader, "/tree/cgaxis_models_14_25.FBX");
+  const fbx = useLoader(FBXLoader, "/models/tree/cgaxis_models_14_25.FBX");
   return <primitive object={fbx} position={position} scale={0.02} />;
 }
 
