@@ -1,10 +1,15 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color: rgb(225, 97, 97);
+  --background-color-layer: rgb(240, 240, 240);
 }
 
-/*Обнуление*/
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  font-family: "Pacifico", cursive;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -78,11 +83,4 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
-}
-/*--------------------*/
-
-body {
-  display: flex;
-  justify-content: center;
-  background-color: rgb(193, 255, 234);
 }
