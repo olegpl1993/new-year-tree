@@ -6,21 +6,14 @@ import Sphere from "./Sphere/Sphere";
 import Box from "./Box/Box";
 import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
+import { Items } from "../types";
 
-type sphereType = {
-  position: [number, number, number];
-  color?: string;
-  pointLight?: boolean;
-};
-type spheresArrTupe = sphereType[];
+interface Props {
+  items: Items;
+}
 
-function Scene() {
-  const spheresArr: spheresArrTupe = [
-    { position: [0.45, 1.45, 0.5], color: "blue", pointLight: true },
-    { position: [-0.45, 1.45, -0.5], color: "blue", pointLight: true },
-    { position: [0.45, 1.45, -0.5], color: "blue", pointLight: true },
-  ];
-
+function Scene(props: Props) {
+  const { items } = props;
   return (
     <Canvas shadows>
       <ambientLight intensity={0.5} />
@@ -39,7 +32,7 @@ function Scene() {
       />
 
       <Tree position={[0, 0, 0]} />
-      {spheresArr.map(({ position, color, pointLight }, index) => (
+      {items.map(({ position, color, pointLight }, index) => (
         <Sphere
           key={index}
           position={position}
