@@ -1,20 +1,23 @@
 import { useState } from "react";
-import { Sphere } from "../types";
+import { Item } from "../types";
 import "./SelectMenu.scss";
 
 interface Props {
-  addSphere: (sphere: Sphere) => void;
+  addSphere: (sphere: Item) => void;
+  deleteActiveItem: () => void;
 }
 
 function SelectMenu(props: Props) {
-  const { addSphere } = props;
+  const { addSphere, deleteActiveItem } = props;
   const [color, setColor] = useState("#ffffff");
 
   const handleClick = () => {
     addSphere({
-      position: [-0.45, 1.45, 0.5],
+      type: "sphere",
+      position: [1, 1.5, 1],
       color,
       pointLight: true,
+      activeElement: false,
     });
   };
 
@@ -35,6 +38,9 @@ function SelectMenu(props: Props) {
       </div>
       <button className="selectMenu__item" onClick={handleClick}>
         Sphere
+      </button>
+      <button className="selectMenu__item" onClick={deleteActiveItem}>
+        Delete
       </button>
     </div>
   );

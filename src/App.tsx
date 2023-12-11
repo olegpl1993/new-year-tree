@@ -2,27 +2,60 @@ import { useState } from "react";
 import "./App.scss";
 import Scene from "./Scene/Scene";
 import SelectMenu from "./SelectMenu/SelectMenu";
-import { Items, Sphere } from "./types";
+import { Item } from "./types";
 
 function App() {
-  const [items, setItems] = useState<Items>([
-    { position: [0.45, 1.45, 0.5], color: "blue", pointLight: true },
-    { position: [-0.45, 1.45, -0.5], color: "blue", pointLight: true },
-    { position: [0.45, 1.45, -0.5], color: "blue", pointLight: true },
+  const [items, setItems] = useState<Item[]>([
+    {
+      type: "sphere",
+      position: [0.45, 1.45, 0.5],
+      color: "blue",
+      pointLight: true,
+      activeElement: false,
+    },
+    {
+      type: "sphere",
+      position: [-0.45, 1.45, -0.5],
+      color: "blue",
+      pointLight: true,
+      activeElement: false,
+    },
+    {
+      type: "sphere",
+      position: [0.45, 1.45, -0.5],
+      color: "blue",
+      pointLight: true,
+      activeElement: false,
+    },
   ]);
 
-  const addSphere = (sphere: Sphere) => {
-    setItems([...items, sphere]);
+  const addSphere = (item: Item) => {
+    setItems([...items, item]);
+  };
+
+  const deleteActiveItem = () => {
+    const newItems = [...items];
+    newItems.forEach((item, index) => {
+      if (item.activeElement) {
+        newItems.splice(index, 1);
+      }
+    });
+    setItems(newItems);
+  };
+
+  const changeByIndex = (index: number, item: Item) => {
+    const newItems = [...items];
+    newItems[index] = item;
+    setItems(newItems);
   };
 
   return (
     <div className="app">
       <div className="app__wrapper">
-        <h1 className="app__title">New Year Tree</h1>
         <div className="app__sceneWrapper">
-          <Scene items={items} />
+          <Scene items={items} changeByIndex={changeByIndex} />
         </div>
-        <SelectMenu addSphere={addSphere} />
+        <SelectMenu addSphere={addSphere} deleteActiveItem={deleteActiveItem} />
       </div>
     </div>
   );
