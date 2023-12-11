@@ -7,6 +7,7 @@ import Box from "./Box/Box";
 import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
 import { Items } from "../types";
+import MovingBox from "./MovingBox/MovingBox";
 
 interface Props {
   items: Items;
@@ -41,6 +42,8 @@ function Scene(props: Props) {
         />
       ))}
       {/* <Sphere position={[0.45, 1.45, 0.5]} color="blue" pointLight /> */}
+
+      <MovingBox />
 
       <Box position={[0, 2.5, 5]} rotation={[0, 0, 0]} />
       <Box position={[5, 2.5, 0]} rotation={[0, 1.57, 0]} />
