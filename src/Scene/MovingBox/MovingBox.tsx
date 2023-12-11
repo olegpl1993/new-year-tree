@@ -1,56 +1,26 @@
-import { useEffect, useState } from "react";
+import { ThreeEvent } from "@react-three/fiber";
 
-const MovingBox = () => {
-  const [position, setPosition] = useState<[number, number, number]>([2, 2, 0]);
-  const [activeElement, setActiveElement] = useState(false);
-  const [prevMousePosition, setPrevMousePosition] = useState({ x: 0, y: 0 });
+interface Props {
+  activeElement: boolean;
+  setActiveElement: (activeElement: boolean) => void;
+  activeElementPosition: [number, number, number];
+}
 
-  const handleClick = () => {
+const MovingBox = (props: Props) => {
+  const { activeElement, setActiveElement, activeElementPosition } = props;
+
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+    console.log(event.point.x, event.point.y, event.point.z);
     setActiveElement(!activeElement);
-    setPrevMousePosition({ x: 0, y: 0 });
   };
-
-  const moveElement = (event: MouseEvent) => {
-    const pixelMoveMultiplier = 10;
-    const deltaX =
-      Math.sign(event.clientX - prevMousePosition.x) * pixelMoveMultiplier;
-    const deltaY =
-      Math.sign(event.clientY - prevMousePosition.y) * pixelMoveMultiplier;
-    console.log(deltaX, deltaY);
-
-    setPosition([
-      position[0] + deltaX / window.innerWidth,
-      position[1] - deltaY / window.innerHeight,
-      0,
-    ]);
-
-    setPrevMousePosition({ x: event.clientX, y: event.clientY });
-  };
-
-  useEffect(() => {
-    if (activeElement) {
-      setPrevMousePosition({ x: 0, y: 0 });
-      document.addEventListener("mousemove", moveElement);
-      document.addEventListener("click", handleClick);
-    } else {
-      document.removeEventListener("mousemove", moveElement);
-      document.removeEventListener("click", handleClick);
-    }
-    return () => {
-      document.removeEventListener("mousemove", moveElement);
-      document.removeEventListener("click", handleClick);
-    };
-  }, [activeElement, position]);
-
-  useEffect(() => {});
 
   return (
-    <mesh position={position} onClick={() => handleClick()}>
-      <boxGeometry args={[0.5, 0.5, 0.5]} />
+    <mesh position={activeElementPosition} onClick={handleClick}>
+      <boxGeometry args={[0.2, 0.2, 0.2]} />
       <meshStandardMaterial
         color={activeElement ? "black" : "red"}
         metalness={1}
-        roughness={0}
+        roughness={0.1}
       />
     </mesh>
   );

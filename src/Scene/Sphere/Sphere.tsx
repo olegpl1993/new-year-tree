@@ -10,7 +10,7 @@ function Sphere(props: Props) {
     <group position={position}>
       <mesh>
         <sphereGeometry args={[0.07]} />
-        <meshStandardMaterial color={color} metalness={1} roughness={0} />
+        <meshStandardMaterial color={color} metalness={1} roughness={0.1} />
       </mesh>
       {pointLight && <pointLight intensity={0.1} color={"white"} />}
     </group>

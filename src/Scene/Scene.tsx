@@ -8,6 +8,7 @@ import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
 import { Items } from "../types";
 import MovingBox from "./MovingBox/MovingBox";
+import { useState } from "react";
 
 interface Props {
   items: Items;
@@ -15,6 +16,11 @@ interface Props {
 
 function Scene(props: Props) {
   const { items } = props;
+  const [activeElement, setActiveElement] = useState(false);
+  const [activeElementPosition, setActiveElementPosition] = useState<
+    [number, number, number]
+  >([2, 2, 0]);
+
   return (
     <Canvas shadows>
       <ambientLight intensity={0.5} />
@@ -32,7 +38,12 @@ function Scene(props: Props) {
         enablePan={false} // Отключение сдвига камеры
       />
 
-      <Tree position={[0, 0, 0]} />
+      <Tree
+        position={[0, 0, 0]}
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
+        setActiveElementPosition={setActiveElementPosition}
+      />
       {items.map(({ position, color, pointLight }, index) => (
         <Sphere
           key={index}
@@ -43,7 +54,11 @@ function Scene(props: Props) {
       ))}
       {/* <Sphere position={[0.45, 1.45, 0.5]} color="blue" pointLight /> */}
 
-      <MovingBox />
+      <MovingBox
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
+        activeElementPosition={activeElementPosition}
+      />
 
       <Box position={[0, 2.5, 5]} rotation={[0, 0, 0]} />
       <Box position={[5, 2.5, 0]} rotation={[0, 1.57, 0]} />
@@ -53,7 +68,7 @@ function Scene(props: Props) {
       <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
       <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />
 
-      <Environment preset="forest" background />
+      <Environment preset="lobby" background />
     </Canvas>
   );
 }
