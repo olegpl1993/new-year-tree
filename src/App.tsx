@@ -44,6 +44,11 @@ function App() {
   };
 
   const changeByIndex = (index: number, item: Item) => {
+    items.map((item) => {
+      if (item.activeElement) {
+        item.activeElement = false;
+      }
+    });
     const newItems = [...items];
     newItems[index] = item;
     setItems(newItems);
