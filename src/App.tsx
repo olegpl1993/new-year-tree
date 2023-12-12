@@ -10,21 +10,6 @@ function App() {
       type: "sphere",
       position: [0.45, 1.45, 0.5],
       color: "blue",
-      pointLight: true,
-      activeElement: false,
-    },
-    {
-      type: "sphere",
-      position: [-0.45, 1.45, -0.5],
-      color: "blue",
-      pointLight: true,
-      activeElement: false,
-    },
-    {
-      type: "sphere",
-      position: [0.45, 1.45, -0.5],
-      color: "blue",
-      pointLight: true,
       activeElement: false,
     },
   ]);
@@ -44,6 +29,11 @@ function App() {
   };
 
   const changeByIndex = (index: number, item: Item) => {
+    items.map((item) => {
+      if (item.activeElement) {
+        item.activeElement = false;
+      }
+    });
     const newItems = [...items];
     newItems[index] = item;
     setItems(newItems);

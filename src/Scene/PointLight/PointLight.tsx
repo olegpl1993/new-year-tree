@@ -12,8 +12,8 @@ function PointLight(props: Props) {
       <pointLight position={position} intensity={intensity} color={color} />
       {point && (
         <mesh position={position}>
-          <sphereGeometry args={[0.1, 32, 32]} />
-          <meshBasicMaterial color="white" transparent opacity={0.5} />
+          <sphereGeometry args={[0.05, 5, 5]} />
+          <meshBasicMaterial color="white" transparent opacity={0.3} />
         </mesh>
       )}
     </group>
