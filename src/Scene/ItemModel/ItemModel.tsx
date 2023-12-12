@@ -19,14 +19,13 @@ function ItemModel(props: Props) {
   return (
     <group position={item.position} onClick={handleClick}>
       <mesh>
-        <sphereGeometry args={[0.07]} />
+        <sphereGeometry args={[0.07, 10, 10]} />
         <meshStandardMaterial
           color={item.activeElement ? "black" : item.color}
           metalness={1}
           roughness={0.1}
         />
       </mesh>
-      {item.pointLight && <pointLight intensity={0.1} color={"white"} />}
     </group>
   );
 }

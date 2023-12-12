@@ -10,21 +10,6 @@ function App() {
       type: "sphere",
       position: [0.45, 1.45, 0.5],
       color: "blue",
-      pointLight: true,
-      activeElement: false,
-    },
-    {
-      type: "sphere",
-      position: [-0.45, 1.45, -0.5],
-      color: "blue",
-      pointLight: true,
-      activeElement: false,
-    },
-    {
-      type: "sphere",
-      position: [0.45, 1.45, -0.5],
-      color: "blue",
-      pointLight: true,
       activeElement: false,
     },
   ]);

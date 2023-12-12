@@ -16,7 +16,6 @@ function SelectMenu(props: Props) {
       type: "sphere",
       position: [1, 1.5, 1],
       color,
-      pointLight: true,
       activeElement: false,
     });
   };
