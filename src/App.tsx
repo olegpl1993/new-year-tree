@@ -5,14 +5,7 @@ import SelectMenu from "./SelectMenu/SelectMenu";
 import { Item } from "./types";
 
 function App() {
-  const [items, setItems] = useState<Item[]>([
-    {
-      type: "sphere",
-      position: [0.45, 1.45, 0.5],
-      color: "blue",
-      activeElement: false,
-    },
-  ]);
+  const [items, setItems] = useState<Item[]>([]);
 
   const addSphere = (item: Item) => {
     setItems([...items, item]);
