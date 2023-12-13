@@ -28,7 +28,7 @@ function Scene(props: Props) {
       <PointLight position={[-2, 4.5, -2]} color="green" intensity={30} point />
 
       <OrbitControls
-        target={[0, 1.9, 0]}
+        target={[0, 1.75, 0]}
         minPolarAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 2}
         minDistance={2}
