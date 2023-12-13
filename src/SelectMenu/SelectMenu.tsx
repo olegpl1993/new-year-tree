@@ -3,23 +3,23 @@ import { Item } from "../types";
 import "./SelectMenu.scss";
 
 interface Props {
-  addSphere: (sphere: Item) => void;
+  addItem: (sphere: Item) => void;
   deleteActiveItem: () => void;
 }
 
 function SelectMenu(props: Props) {
-  const { addSphere, deleteActiveItem } = props;
+  const { addItem, deleteActiveItem } = props;
   const [color, setColor] = useState("#ffffff");
 
   const types = ["sphere", "light", "crystal"];
   const [selectedType, setSelectedType] = useState(0);
 
   const handleClick = () => {
-    addSphere({
+    addItem({
       type: types[selectedType],
-      position: [1, 1.5, 1],
+      position: [1, 2, 1],
       color,
-      activeElement: false,
+      activeElement: true,
     });
   };
 

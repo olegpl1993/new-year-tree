@@ -27,7 +27,7 @@ function Tree(props: Props) {
     <primitive
       object={fbx}
       position={position}
-      scale={0.02}
+      scale={0.025}
       onClick={handleClick}
     />
   );

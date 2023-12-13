@@ -5,16 +5,14 @@ import SelectMenu from "./SelectMenu/SelectMenu";
 import { Item } from "./types";
 
 function App() {
-  const [items, setItems] = useState<Item[]>([
-    {
-      type: "sphere",
-      position: [0.45, 1.45, 0.5],
-      color: "blue",
-      activeElement: false,
-    },
-  ]);
+  const [items, setItems] = useState<Item[]>([]);
 
-  const addSphere = (item: Item) => {
+  const addItem = (item: Item) => {
+    items.map((item) => {
+      if (item.activeElement) {
+        item.activeElement = false;
+      }
+    });
     setItems([...items, item]);
   };
 
@@ -45,7 +43,7 @@ function App() {
         <div className="app__sceneWrapper">
           <Scene items={items} changeByIndex={changeByIndex} />
         </div>
-        <SelectMenu addSphere={addSphere} deleteActiveItem={deleteActiveItem} />
+        <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} />
       </div>
     </div>
   );

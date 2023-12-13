@@ -1,11 +1,9 @@
 .app {
   &__wrapper {
-    padding: 10px;
     width: 1600px;
     height: 100dvh;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     background-color: var(--background-color-layer);
 
     @media (max-width: 1600px) {
@@ -16,7 +14,6 @@
     }
     @media (max-width: 1024px) {
       width: 100vw;
-      padding: 5px;
     }
   }
 
