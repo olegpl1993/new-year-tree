@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import "./App.scss";
 import Scene from "./Scene/Scene";
 import SelectMenu from "./SelectMenu/SelectMenu";
 import { Item } from "./types";
+import Spinner from "./Spinner/Spinner";
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
@@ -41,7 +42,9 @@ function App() {
     <div className="app">
       <div className="app__wrapper">
         <div className="app__sceneWrapper">
-          <Scene items={items} changeByIndex={changeByIndex} />
+          <Suspense fallback={<Spinner />}>
+            <Scene items={items} changeByIndex={changeByIndex} />
+          </Suspense>
         </div>
         <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} />
       </div>
