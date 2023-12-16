@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Item } from "../types";
 import "./SelectMenu.scss";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 interface Props {
   addItem: (sphere: Item) => void;
@@ -35,41 +37,54 @@ function SelectMenu(props: Props) {
     );
   };
 
+  const [visible, setVisible] = useState(true);
+  const handleVisible = () => {
+    setVisible(!visible);
+  };
+
   return (
     <div className="selectMenu">
-      <div className="selectMenu__colorPicker">
-        <p className="selectMenu__colorPickerTitle">Select color</p>
-        <input
-          className="selectMenu__colorPickerInput"
-          type="color"
-          value={color}
-          onChange={handleColorChange}
-        />
-      </div>
-
-      <div className="selectMenu__typePicker">
-        <button
-          className="selectMenu__typeSelector"
-          onClick={() => selectType("<")}
-        >
-          {"<"}
-        </button>
-
-        <button className="selectMenu__item" onClick={handleClick}>
-          {types[selectedType]}
-        </button>
-
-        <button
-          className="selectMenu__typeSelector"
-          onClick={() => selectType(">")}
-        >
-          {">"}
-        </button>
-      </div>
-
-      <button className="selectMenu__item" onClick={deleteActiveItem}>
-        delete
+      <button className="selectMenu__visible" onClick={handleVisible}>
+        {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
       </button>
+
+      {visible && (
+        <div className="selectMenu__wrapper">
+          <div className="selectMenu__colorPicker">
+            <p className="selectMenu__colorPickerTitle">Select color</p>
+            <input
+              className="selectMenu__colorPickerInput"
+              type="color"
+              value={color}
+              onChange={handleColorChange}
+            />
+          </div>
+
+          <div className="selectMenu__typePicker">
+            <button
+              className="selectMenu__typeSelector"
+              onClick={() => selectType("<")}
+            >
+              {"<"}
+            </button>
+
+            <button className="selectMenu__item" onClick={handleClick}>
+              {types[selectedType]}
+            </button>
+
+            <button
+              className="selectMenu__typeSelector"
+              onClick={() => selectType(">")}
+            >
+              {">"}
+            </button>
+          </div>
+
+          <button className="selectMenu__item" onClick={deleteActiveItem}>
+            delete
+          </button>
+        </div>
+      )}
     </div>
   );
 }

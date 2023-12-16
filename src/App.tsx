@@ -4,6 +4,7 @@ import Scene from "./Scene/Scene";
 import SelectMenu from "./SelectMenu/SelectMenu";
 import { Item } from "./types";
 import Spinner from "./Spinner/Spinner";
+import Music from "./Music/Music";
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
@@ -47,6 +48,7 @@ function App() {
           </Suspense>
         </div>
         <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} />
+        <Music />
       </div>
     </div>
   );
