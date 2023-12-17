@@ -15,7 +15,7 @@ function Window(props: Props) {
 
   return (
     <mesh position={position} rotation={rotation}>
-      <planeGeometry args={[2.5, 2.5]} />
+      <planeGeometry args={[2.4, 2.4]} />
       <meshStandardMaterial attach="material" map={texture} color={"#a0a0a0"} />
     </mesh>
   );

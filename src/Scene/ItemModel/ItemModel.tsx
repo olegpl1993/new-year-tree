@@ -1,4 +1,7 @@
 import { Item } from "../../types";
+import Light from "./Light/Light";
+import Sphere from "./Sphere/Sphere";
+import Crystal from "./Сrystal/Crystal";
 
 interface Props {
   item: Item;
@@ -17,43 +20,15 @@ function ItemModel(props: Props) {
   };
 
   if (item.type === "sphere") {
-    return (
-      <mesh position={item.position} onClick={handleClick}>
-        <sphereGeometry args={[0.12, 11, 11]} />
-        <meshStandardMaterial
-          color={item.activeElement ? "black" : item.color}
-          metalness={0.95}
-          roughness={0.2}
-        />
-      </mesh>
-    );
+    return <Sphere item={item} handleClick={handleClick} />;
   }
 
   if (item.type === "light") {
-    return (
-      <group onClick={handleClick}>
-        <pointLight position={item.position} intensity={1.5} color={item.color} />
-        <mesh position={item.position}>
-          <sphereGeometry args={[0.035, 5, 5]} />
-          <meshStandardMaterial
-            color={item.activeElement ? "black" : item.color}
-          />
-        </mesh>
-      </group>
-    );
+    return <Light item={item} handleClick={handleClick} />;
   }
 
   if (item.type === "crystal") {
-    return (
-      <mesh position={item.position} onClick={handleClick}>
-        <octahedronGeometry args={[0.15, 0]} />
-        <meshStandardMaterial
-          color={item.activeElement ? "black" : item.color}
-          metalness={0.95}
-          roughness={0.15}
-        />
-      </mesh>
-    );
+    return <Crystal item={item} handleClick={handleClick} />;
   }
 }
 
