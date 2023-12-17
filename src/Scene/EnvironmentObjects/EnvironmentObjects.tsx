@@ -6,13 +6,24 @@ import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
 import Window from "./Window/Window";
 
-function EnvironmentObjects() {
+interface Props {
+  environment?: boolean;
+}
+
+function EnvironmentObjects(props: Props) {
+  const { environment } = props;
   return (
-    <>
-      <PointLight position={[2, 4.5, 2]} color="red" intensity={30} point />
-      <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} point />
-      <PointLight position={[2, 4.5, -2]} color="yellow" intensity={30} point />
-      <PointLight position={[-2, 4.5, -2]} color="green" intensity={30} point />
+    <group position={environment ? [0, -1.75, 0] : [0, 0, 0]}>
+      {environment ? null : (
+        <>
+          <PointLight position={[2, 4.5, 2]} color="red" intensity={50} />
+          <PointLight position={[-2, 4.5, 2]} color="blue" intensity={50} />
+          <PointLight position={[2, 4.5, -2]} color="orange" intensity={50} />
+          <PointLight position={[-2, 4.5, -2]} color="green" intensity={50} />
+        </>
+      )}
+
+      <ambientLight intensity={1.5} />
 
       <Door position={[4.94, 1.75, 0]} rotation={[0, -1.57, 0]} />
       <Window position={[0, 2, -4.94]} rotation={[0, 0, 0]} />
@@ -26,7 +37,7 @@ function EnvironmentObjects() {
 
       <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
       <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />
-    </>
+    </group>
   );
 }
 
