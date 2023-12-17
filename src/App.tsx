@@ -47,7 +47,7 @@ function App() {
             <Scene items={items} changeByIndex={changeByIndex} />
           </Suspense>
         </div>
-        <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} />
+        <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} items={items} />
         <Music />
       </div>
     </div>
