@@ -5,6 +5,7 @@ import Box from "./Box/Box";
 import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
 import Window from "./Window/Window";
+import Stand from "./Stand/Stand";
 
 interface Props {
   environment?: boolean;
@@ -37,6 +38,8 @@ function EnvironmentObjects(props: Props) {
 
       <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
       <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />
+
+      <Stand position={[0, 0, 0]} rotation={[0, 0, 0]} />
     </group>
   );
 }
