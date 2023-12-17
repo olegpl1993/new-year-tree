@@ -18,9 +18,9 @@ function SelectMenu(props: Props) {
   const [selectedType, setSelectedType] = useState(0);
 
   const itemsLimit: Record<string, number> = {
-    sphere: 10,
-    light: 10,
-    crystal: 10,
+    sphere: 15,
+    light: 6,
+    crystal: 15,
   };
 
   const intemsAtScene: Record<string, number> = items.reduce(

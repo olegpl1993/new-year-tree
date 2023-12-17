@@ -19,7 +19,7 @@ function ItemModel(props: Props) {
   if (item.type === "sphere") {
     return (
       <mesh position={item.position} onClick={handleClick}>
-        <sphereGeometry args={[0.12, 11, 11]} />
+        <sphereGeometry args={[0.11, 11, 11]} />
         <meshStandardMaterial
           color={item.activeElement ? "black" : item.color}
           metalness={0.95}
@@ -46,7 +46,7 @@ function ItemModel(props: Props) {
   if (item.type === "crystal") {
     return (
       <mesh position={item.position} onClick={handleClick}>
-        <octahedronGeometry args={[0.15, 0]} />
+        <octahedronGeometry args={[0.13, 0]} />
         <meshStandardMaterial
           color={item.activeElement ? "black" : item.color}
           metalness={0.95}

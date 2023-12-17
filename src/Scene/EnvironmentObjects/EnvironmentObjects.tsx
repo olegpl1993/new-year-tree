@@ -18,8 +18,8 @@ function EnvironmentObjects(props: Props) {
         <>
           <PointLight position={[2, 4.5, 2]} color="red" intensity={50} />
           <PointLight position={[-2, 4.5, 2]} color="blue" intensity={50} />
-          <PointLight position={[2, 4.5, -2]} color="orange" intensity={50} />
-          <PointLight position={[-2, 4.5, -2]} color="green" intensity={50} />
+          <PointLight position={[2, 4.5, -2]} color="green" intensity={50} />
+          <PointLight position={[-2, 4.5, -2]} color="orange" intensity={50} />
         </>
       )}
 
