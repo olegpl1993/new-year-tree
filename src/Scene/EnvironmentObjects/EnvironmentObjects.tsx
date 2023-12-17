@@ -16,10 +16,10 @@ function EnvironmentObjects(props: Props) {
     <group position={environment ? [0, -1.75, 0] : [0, 0, 0]}>
       {environment ? null : (
         <>
-          <PointLight position={[2, 4.5, 2]} color="red" intensity={50} />
-          <PointLight position={[-2, 4.5, 2]} color="blue" intensity={50} />
-          <PointLight position={[2, 4.5, -2]} color="green" intensity={50} />
-          <PointLight position={[-2, 4.5, -2]} color="orange" intensity={50} />
+          <PointLight position={[2, 4.5, 2]} color="red" intensity={30} />
+          <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} />
+          <PointLight position={[2, 4.5, -2]} color="green" intensity={30} />
+          <PointLight position={[-2, 4.5, -2]} color="orange" intensity={30} />
         </>
       )}
 
