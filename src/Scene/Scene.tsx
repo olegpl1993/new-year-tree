@@ -14,7 +14,7 @@ function Scene(props: Props) {
   const { items, changeByIndex } = props;
 
   return (
-    <Canvas shadows>
+    <Canvas>
       <Tree position={[0, 0, 0]} items={items} changeByIndex={changeByIndex} />
 
       {items.map((item, index) => (
@@ -26,8 +26,6 @@ function Scene(props: Props) {
         />
       ))}
 
-      <EnvironmentObjects />
-
       <OrbitControls
         target={[0, 1.75, 0]}
         minPolarAngle={Math.PI / 2}
@@ -37,9 +35,12 @@ function Scene(props: Props) {
         enablePan={false}
       />
 
-      <ambientLight intensity={0.5} />
-
-      <Environment preset="lobby" background />
+      <EnvironmentObjects />
+      <Environment
+        background
+        resolution={82}
+        children={<EnvironmentObjects environment />}
+      />
     </Canvas>
   );
 }
