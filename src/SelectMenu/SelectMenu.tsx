@@ -3,6 +3,7 @@ import { Item } from "../types";
 import "./SelectMenu.scss";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Button, IconButton } from "@mui/material";
 
 interface Props {
   addItem: (sphere: Item) => void;
@@ -65,9 +66,11 @@ function SelectMenu(props: Props) {
 
   return (
     <div className="selectMenu">
-      <button className="selectMenu__visible" onClick={handleVisible}>
-        {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
-      </button>
+      <div className="selectMenu__visible">
+        <IconButton onClick={handleVisible} sx={{ color: "rgb(225, 97, 97)" }}>
+          {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
+        </IconButton>
+      </div>
 
       {visible && (
         <div className="selectMenu__wrapper">
@@ -86,28 +89,76 @@ function SelectMenu(props: Props) {
           </div>
 
           <div className="selectMenu__typePicker">
-            <button
+            <IconButton
               className="selectMenu__typeSelector"
               onClick={() => handleSelectType("<")}
+              sx={{
+                height: "37px",
+                width: "37px",
+                fontSize: "30px",
+                color: "rgb(225, 97, 97)",
+                fontFamily: "Arial",
+              }}
             >
               {"<"}
-            </button>
+            </IconButton>
 
-            <button className="selectMenu__item" onClick={handleAddItem}>
+            <Button
+              onClick={handleAddItem}
+              variant="contained"
+              sx={{
+                width: "75px",
+                height: "60px",
+                borderRadius: "20px",
+                fontSize: "15px",
+                fontFamily: "Pacifico",
+                textTransform: "none",
+                backgroundColor: "rgb(225, 97, 97)",
+                boxShadow: "none",
+                "&:hover": {
+                  backgroundColor: "rgb(225, 97, 97)",
+                  boxShadow: "none",
+                },
+              }}
+            >
               {types[selectedType]}
-            </button>
+            </Button>
 
-            <button
+            <IconButton
               className="selectMenu__typeSelector"
               onClick={() => handleSelectType(">")}
+              sx={{
+                height: "37px",
+                width: "37px",
+                fontSize: "30px",
+                color: "rgb(225, 97, 97)",
+                fontFamily: "Arial",
+              }}
             >
               {">"}
-            </button>
+            </IconButton>
           </div>
 
-          <button className="selectMenu__item" onClick={deleteActiveItem}>
+          <Button
+            onClick={deleteActiveItem}
+            variant="contained"
+            sx={{
+              width: "75px",
+              height: "60px",
+              borderRadius: "20px",
+              fontSize: "15px",
+              fontFamily: "Pacifico",
+              textTransform: "none",
+              backgroundColor: "rgb(225, 97, 97)",
+              boxShadow: "none",
+              "&:hover": {
+                backgroundColor: "rgb(225, 97, 97)",
+                boxShadow: "none",
+              },
+            }}
+          >
             delete
-          </button>
+          </Button>
         </div>
       )}
     </div>
