@@ -5,6 +5,8 @@ import Box from "./Box/Box";
 import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
 import Window from "./Window/Window";
+import Stand from "./Stand/Stand";
+import Present from "./Present/Present";
 
 interface Props {
   environment?: boolean;
@@ -12,6 +14,7 @@ interface Props {
 
 function EnvironmentObjects(props: Props) {
   const { environment } = props;
+
   return (
     <group position={environment ? [0, -1.75, 0] : [0, 0, 0]}>
       {environment ? null : (
@@ -20,6 +23,24 @@ function EnvironmentObjects(props: Props) {
           <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} />
           <PointLight position={[2, 4.5, -2]} color="green" intensity={30} />
           <PointLight position={[-2, 4.5, -2]} color="orange" intensity={30} />
+
+          <group position={[0, 0, 0]} rotation={[0, 3.9, 0]} scale={1}>
+            <Present
+              position={[0.4, 0, 0.4]}
+              rotation={[0, 1, 0]}
+              scale={0.0012}
+            />
+            <Present
+              position={[0, 0, 0.6]}
+              rotation={[0, 0, 0]}
+              scale={0.0017}
+            />
+            <Present
+              position={[-0.4, 0, 0.4]}
+              rotation={[0, 1, 0]}
+              scale={0.0014}
+            />
+          </group>
         </>
       )}
 
@@ -37,6 +58,8 @@ function EnvironmentObjects(props: Props) {
 
       <Floor position={[0, 0, 0]} rotation={[-1.57, 0, 0]} />
       <Floor2 position={[0, 5, 0]} rotation={[1.57, 0, 0]} />
+
+      <Stand position={[0, 0, 0]} rotation={[0, 0, 0]} />
     </group>
   );
 }
