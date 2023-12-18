@@ -24,7 +24,7 @@ function EnvironmentObjects(props: Props) {
           <PointLight position={[2, 4.5, -2]} color="green" intensity={30} />
           <PointLight position={[-2, 4.5, -2]} color="orange" intensity={30} />
 
-          <group position={[0, 0, 0]} rotation={[0, 0.6, 0]} scale={1}>
+          <group position={[0, 0, 0]} rotation={[0, 3.9, 0]} scale={1}>
             <Present
               position={[0.4, 0, 0.4]}
               rotation={[0, 1, 0]}
@@ -38,7 +38,7 @@ function EnvironmentObjects(props: Props) {
             <Present
               position={[-0.4, 0, 0.4]}
               rotation={[0, 1, 0]}
-              scale={0.0013}
+              scale={0.0014}
             />
           </group>
         </>
