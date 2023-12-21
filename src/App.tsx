@@ -5,6 +5,7 @@ import SelectMenu from "./SelectMenu/SelectMenu";
 import { Item } from "./types";
 import Spinner from "./Spinner/Spinner";
 import Music from "./Music/Music";
+import Settings from "./Settings/Settings";
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
@@ -47,8 +48,13 @@ function App() {
             <Scene items={items} changeByIndex={changeByIndex} />
           </Suspense>
         </div>
-        <SelectMenu addItem={addItem} deleteActiveItem={deleteActiveItem} items={items} />
+        <SelectMenu
+          addItem={addItem}
+          deleteActiveItem={deleteActiveItem}
+          items={items}
+        />
         <Music />
+        <Settings />
       </div>
     </div>
   );

@@ -1,0 +1,138 @@
+.settings {
+  &__openButton {
+    position: absolute;
+    color: var(--primary-color);
+    top: 75px;
+    left: 80%;
+    transform: translate(-50%);
+    user-select: none;
+    height: 40px;
+    width: 40px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
+
+  &__wrapper {
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-duration: 0.5s;
+    animation-name: wrapperAnime;
+    cursor: pointer;
+
+    @keyframes wrapperAnime {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__box {
+    position: relative;
+    background-color: white;
+    width: 300px;
+    height: 270px;
+    animation-duration: 0.5s;
+    animation-name: boxAnime;
+    cursor: auto;
+    border: 3px solid var(--primary-color);
+    border-radius: 20px;
+  }
+
+  @keyframes boxAnime {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  &__content {
+    background-color: white;
+    padding: 5px;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__title {
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    color: var(--primary-color);
+    padding: 5px;
+  }
+
+  &__close {
+    display: block;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    --weight: 0.5px;
+    --aa: 2px; /* anti-aliasing */
+    --color: var(--primary-color);
+    cursor: pointer;
+    background: linear-gradient(
+        45deg,
+        transparent calc(50% - var(--weight) - var(--aa)),
+        var(--color) calc(50% - var(--weight)),
+        var(--color) calc(50% + var(--weight)),
+        transparent calc(50% + var(--weight) + var(--aa))
+      ),
+      linear-gradient(
+        -45deg,
+        transparent calc(50% - var(--weight) - var(--aa)),
+        var(--color) calc(50% - var(--weight)),
+        var(--color) calc(50% + var(--weight)),
+        transparent calc(50% + var(--weight) + var(--aa))
+      );
+    transition: all 0.3s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__layer {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+  }
+
+  &__volume {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__volumeValue {
+    color: var(--primary-color);
+    margin-left: 10px;
+    width: 60px;
+  }
+}
