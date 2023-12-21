@@ -35,6 +35,8 @@ function Scene(props: Props) {
         enablePan={false}
       />
 
+      {/* <OrbitControls /> */}
+
       <EnvironmentObjects />
       <Environment
         background

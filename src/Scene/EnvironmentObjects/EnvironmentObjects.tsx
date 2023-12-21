@@ -7,6 +7,7 @@ import Floor2 from "./Floor2/Floor2";
 import Window from "./Window/Window";
 import Stand from "./Stand/Stand";
 import Present from "./Present/Present";
+import Bells from "./Bells/Bells";
 
 interface Props {
   environment?: boolean;
@@ -23,6 +24,11 @@ function EnvironmentObjects(props: Props) {
           <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} />
           <PointLight position={[2, 4.5, -2]} color="green" intensity={30} />
           <PointLight position={[-2, 4.5, -2]} color="orange" intensity={30} />
+
+          <Bells position={[4.9, 2, 3]} rotation={[0, -1.57, 0]} scale={0.01} />
+          <Bells position={[4.9, 2, -3]} rotation={[0, -1.57, 0]} scale={0.01} />
+          <Bells position={[-4.9, 2, 3]} rotation={[0, 1.57, 0]} scale={0.01} />
+          <Bells position={[-4.9, 2, -3]} rotation={[0, 1.57, 0]} scale={0.01} />
 
           <group position={[0, 0, 0]} rotation={[0, 3.9, 0]} scale={1}>
             <Present
