@@ -21,6 +21,10 @@ function Modal() {
     dispatch({ type: "SET_VOLUME", payload: newValue as number });
   };
 
+  const handleChangeTreeSize = (_event: Event, newValue: number | number[]) => {
+    dispatch({ type: "SET_TREE_SIZE", payload: newValue as number });
+  };
+
   return (
     <div className="settings">
       <div className="settings__openButton">
@@ -52,7 +56,7 @@ function Modal() {
               <div className="settings__title">Settings</div>
 
               <div className="settings__layer">
-                <div className="settings__volume">
+                <div className="settings__row">
                   <VolumeDown
                     fontSize="large"
                     sx={{ color: "rgb(225, 97, 97)" }}
@@ -65,7 +69,20 @@ function Modal() {
                     sx={{ color: "rgb(225, 97, 97)" }}
                   />
 
-                  <p className="settings__volumeValue">{state.volume}%</p>
+                  <p className="settings__value">{state.volume}%</p>
+                </div>
+
+                <div className="settings__row">
+                  <p className="settings__subtitle">Tree size</p>
+
+                  <Slider
+                    aria-label="Volume"
+                    value={state.treeSize}
+                    onChange={handleChangeTreeSize}
+                    sx={{ color: "rgb(225, 97, 97)" }}
+                  />
+
+                  <p className="settings__value">{state.treeSize}%</p>
                 </div>
               </div>
             </div>
