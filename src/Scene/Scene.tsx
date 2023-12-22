@@ -4,6 +4,7 @@ import Tree from "./Tree/Tree";
 import ItemModel from "./ItemModel/ItemModel";
 import { Item } from "../types";
 import EnvironmentObjects from "./EnvironmentObjects/EnvironmentObjects";
+import { useStore } from "../store/hook";
 
 interface Props {
   items: Item[];
@@ -12,10 +13,27 @@ interface Props {
 
 function Scene(props: Props) {
   const { items, changeByIndex } = props;
+  const { state } = useStore();
+
+  const treeSizeToScale = (size: number) => {
+    const minSize = 0;
+    const maxSize = 100;
+    const minScale = 0.02;
+    const maxScale = 0.03;
+    return (
+      ((size - minSize) / (maxSize - minSize)) * (maxScale - minScale) +
+      minScale
+    );
+  };
 
   return (
     <Canvas>
-      <Tree position={[0, 0, 0]} items={items} changeByIndex={changeByIndex} />
+      <Tree
+        position={[0, 0, 0]}
+        scale={treeSizeToScale(state.treeSize)}
+        items={items}
+        changeByIndex={changeByIndex}
+      />
 
       {items.map((item, index) => (
         <ItemModel
@@ -34,6 +52,8 @@ function Scene(props: Props) {
         maxDistance={4}
         enablePan={false}
       />
+
+      {/* <OrbitControls /> */}
 
       <EnvironmentObjects />
       <Environment

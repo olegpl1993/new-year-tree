@@ -4,12 +4,13 @@ import { Item } from "../../types";
 
 interface Props {
   position: [number, number, number];
+  scale: number;
   items: Item[];
   changeByIndex: (index: number, item: Item) => void;
 }
 
 function Tree(props: Props) {
-  const { position, items, changeByIndex } = props;
+  const { position, scale, items, changeByIndex } = props;
   const handleClick = (event: ThreeEvent<MouseEvent>) => {
     items.map((item, index) => {
       if (item.activeElement) {
@@ -27,7 +28,7 @@ function Tree(props: Props) {
     <primitive
       object={fbx}
       position={position}
-      scale={0.025}
+      scale={scale}
       onClick={handleClick}
     />
   );

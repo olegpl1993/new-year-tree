@@ -3,6 +3,7 @@ import { settingsSlice } from "./slices/settingsSlice";
 
 interface State {
   volume: number;
+  treeSize: number;
 }
 
 export const StoreContext = createContext<
