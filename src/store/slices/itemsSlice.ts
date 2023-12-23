@@ -15,9 +15,7 @@ export const itemsSlice = {
     items: [],
   },
   reducer: (
-    state: {
-      items: Item[];
-    },
+    state: ItemsState,
     action: { type: string; payload?: ItemsPayload }
   ) => {
     const actions: Record<string, () => ItemsState> = {

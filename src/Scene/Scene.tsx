@@ -8,6 +8,7 @@ import { useStore } from "../store/hook";
 function Scene() {
   const { state } = useStore();
   const items = state.items.items;
+  const treeSize = state.settings.treeSize;
 
   const treeSizeToScale = (size: number) => {
     const minSize = 0;
@@ -22,17 +23,10 @@ function Scene() {
 
   return (
     <Canvas>
-      <Tree
-        position={[0, 0, 0]}
-        scale={treeSizeToScale(state.settings.treeSize)}
-      />
+      <Tree position={[0, 0, 0]} scale={treeSizeToScale(treeSize)} />
 
       {items.map((item, index) => (
-        <ItemModel
-          key={index}
-          item={item}
-          index={index}
-        />
+        <ItemModel key={index} item={item} index={index} />
       ))}
 
       <OrbitControls

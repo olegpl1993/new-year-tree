@@ -1,18 +1,17 @@
 export interface SettingsState {
   volume: number;
   treeSize: number;
+  light: number;
 }
 
 export const settingsSlice = {
   initialState: {
     volume: 50,
     treeSize: 50,
+    light: 50,
   },
   reducer: (
-    state: {
-      treeSize: number;
-      volume: number;
-    },
+    state: SettingsState,
     action: { type: string; payload?: number }
   ) => {
     const actions: Record<string, () => SettingsState> = {
@@ -25,6 +24,11 @@ export const settingsSlice = {
         ...state,
         treeSize:
           action.payload !== undefined ? action.payload : state.treeSize,
+      }),
+
+      SET_LIGHT: () => ({
+        ...state,
+        light: action.payload !== undefined ? action.payload : state.light,
       }),
     };
 
