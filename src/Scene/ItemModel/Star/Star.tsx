@@ -42,7 +42,7 @@ function Star(props: Props) {
       position={item.position}
       onClick={handleClick}
       rotation={[0, rotationOptions.rndYRotation, 0]}
-      scale={0.18}
+      scale={0.19}
     >
       <meshStandardMaterial
         color={item.activeElement ? "black" : item.color}

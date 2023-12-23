@@ -18,7 +18,7 @@ function SelectMenu() {
     sphere: 20,
     light: 6,
     crystal: 15,
-    star: 10,
+    star: 15,
   };
 
   const intemsAtScene: Record<string, number> = items.reduce(
