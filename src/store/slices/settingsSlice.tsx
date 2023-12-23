@@ -18,11 +18,13 @@ export const settingsSlice = {
     const actions: Record<string, () => SettingsState> = {
       SET_VOLUME: () => ({
         ...state,
-        volume: action.payload ? action.payload : state.volume,
+        volume: action.payload !== undefined ? action.payload : state.volume,
       }),
+
       SET_TREE_SIZE: () => ({
         ...state,
-        treeSize: action.payload ? action.payload : state.treeSize,
+        treeSize:
+          action.payload !== undefined ? action.payload : state.treeSize,
       }),
     };
 
