@@ -8,6 +8,7 @@ import Window from "./Window/Window";
 import Stand from "./Stand/Stand";
 import Present from "./Present/Present";
 import Bells from "./Bells/Bells";
+import { useStore } from "../../store/hook";
 
 interface Props {
   environment?: boolean;
@@ -15,6 +16,20 @@ interface Props {
 
 function EnvironmentObjects(props: Props) {
   const { environment } = props;
+  const { state } = useStore();
+  const light = state.settings.light;
+
+  const lightToIntensity = (light: number) => {
+    const minLight = 0;
+    const maxLight = 100;
+    const minIntensity = 0;
+    const maxIntensity = 3;
+    return (
+      ((light - minLight) / (maxLight - minLight)) *
+        (maxIntensity - minIntensity) +
+      minIntensity
+    );
+  };
 
   return (
     <group position={environment ? [0, -1.75, 0] : [0, 0, 0]}>
@@ -58,7 +73,7 @@ function EnvironmentObjects(props: Props) {
         </>
       )}
 
-      <ambientLight intensity={1.5} />
+      <ambientLight intensity={lightToIntensity(light)} />
 
       <Door position={[4.94, 1.75, 0]} rotation={[0, -1.57, 0]} />
       <Window position={[0, 2, -4.94]} rotation={[0, 0, 0]} />

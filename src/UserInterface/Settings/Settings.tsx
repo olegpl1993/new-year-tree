@@ -7,6 +7,9 @@ import { useStore } from "../../store/hook";
 
 function Modal() {
   const { state, dispatch } = useStore();
+  const light = state.settings.light;
+  const volume = state.settings.volume;
+  const treeSize = state.settings.treeSize;
 
   const [modalActive, setModalActive] = useState(false);
 
@@ -23,6 +26,10 @@ function Modal() {
 
   const handleChangeTreeSize = (_event: Event, newValue: number | number[]) => {
     dispatch.settings({ type: "SET_TREE_SIZE", payload: newValue as number });
+  };
+
+  const handleChangeLight = (_event: Event, newValue: number | number[]) => {
+    dispatch.settings({ type: "SET_LIGHT", payload: newValue as number });
   };
 
   return (
@@ -57,19 +64,21 @@ function Modal() {
 
               <div className="settings__layer">
                 <div className="settings__row">
-                  <VolumeDown
-                    fontSize="large"
-                    sx={{ color: "rgb(225, 97, 97)" }}
-                  />
+                  <p className="settings__subtitle">
+                    <VolumeDown
+                      fontSize="large"
+                      sx={{ color: "rgb(225, 97, 97)" }}
+                    />
+                  </p>
 
                   <Slider
                     aria-label="Volume"
-                    value={state.settings.volume}
+                    value={volume}
                     onChange={handleChangeVolume}
                     sx={{ color: "rgb(225, 97, 97)" }}
                   />
 
-                  <p className="settings__value">{state.settings.volume}%</p>
+                  <p className="settings__value">{volume}%</p>
                 </div>
 
                 <div className="settings__row">
@@ -77,12 +86,25 @@ function Modal() {
 
                   <Slider
                     aria-label="Volume"
-                    value={state.settings.treeSize}
+                    value={treeSize}
                     onChange={handleChangeTreeSize}
                     sx={{ color: "rgb(225, 97, 97)" }}
                   />
 
-                  <p className="settings__value">{state.settings.treeSize}%</p>
+                  <p className="settings__value">{treeSize}%</p>
+                </div>
+
+                <div className="settings__row">
+                  <p className="settings__subtitle">Light</p>
+
+                  <Slider
+                    aria-label="Volume"
+                    value={light}
+                    onChange={handleChangeLight}
+                    sx={{ color: "rgb(225, 97, 97)" }}
+                  />
+
+                  <p className="settings__value">{light}%</p>
                 </div>
               </div>
             </div>
