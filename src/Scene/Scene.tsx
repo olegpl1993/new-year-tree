@@ -30,7 +30,7 @@ function Scene(props: Props) {
     <Canvas>
       <Tree
         position={[0, 0, 0]}
-        scale={treeSizeToScale(state.treeSize)}
+        scale={treeSizeToScale(state.settings.treeSize)}
         items={items}
         changeByIndex={changeByIndex}
       />
@@ -52,8 +52,6 @@ function Scene(props: Props) {
         maxDistance={4}
         enablePan={false}
       />
-
-      {/* <OrbitControls /> */}
 
       <EnvironmentObjects />
       <Environment

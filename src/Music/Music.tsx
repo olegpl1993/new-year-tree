@@ -16,7 +16,7 @@ function Music() {
   };
 
   if (audioRef.current) {
-    audioRef.current.volume = state.volume / 100;
+    audioRef.current.volume = state.settings.volume / 100;
   }
 
   if (isVolume) {

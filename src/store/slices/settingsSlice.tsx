@@ -1,4 +1,4 @@
-interface State {
+export interface SettingsState {
   volume: number;
   treeSize: number;
 }
@@ -15,15 +15,14 @@ export const settingsSlice = {
     },
     action: { type: string; payload?: number }
   ) => {
-    const actions: Record<string, () => State> = {
+    const actions: Record<string, () => SettingsState> = {
       SET_VOLUME: () => ({
         ...state,
-        volume: action.payload !== undefined ? action.payload : state.volume,
+        volume: action.payload ? action.payload : state.volume,
       }),
       SET_TREE_SIZE: () => ({
         ...state,
-        treeSize:
-          action.payload !== undefined ? action.payload : state.treeSize,
+        treeSize: action.payload ? action.payload : state.treeSize,
       }),
     };
 
