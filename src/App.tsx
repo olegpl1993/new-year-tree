@@ -1,10 +1,8 @@
-import { Suspense } from "react";
 import "./App.scss";
+import { Suspense } from "react";
 import Scene from "./Scene/Scene";
-import SelectMenu from "./SelectMenu/SelectMenu";
 import Spinner from "./Spinner/Spinner";
-import Music from "./Music/Music";
-import Settings from "./Settings/Settings";
+import UserInterface from "./UserInterface/UserInterface";
 
 function App() {
   return (
@@ -15,9 +13,7 @@ function App() {
             <Scene />
           </Suspense>
         </div>
-        <SelectMenu />
-        <Music />
-        <Settings />
+        <UserInterface />
       </div>
     </div>
   );

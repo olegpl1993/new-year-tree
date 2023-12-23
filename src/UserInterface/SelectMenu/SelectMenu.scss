@@ -33,10 +33,10 @@
     gap: 2px;
     padding: 8px;
     animation-duration: 0.5s;
-    animation-name: boxAnime;
+    animation-name: menuAnime;
   }
 
-  @keyframes boxAnime {
+  @keyframes menuAnime {
     from {
       opacity: 0;
     }

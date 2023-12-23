@@ -3,7 +3,7 @@ import "./SelectMenu.scss";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Button, IconButton } from "@mui/material";
-import { useStore } from "../store/hook";
+import { useStore } from "../../store/hook";
 
 function SelectMenu() {
   const { state, dispatch } = useStore();
@@ -15,7 +15,7 @@ function SelectMenu() {
   const [selectedType, setSelectedType] = useState(0);
 
   const itemsLimit: Record<string, number> = {
-    sphere: 15,
+    sphere: 20,
     light: 6,
     crystal: 15,
   };

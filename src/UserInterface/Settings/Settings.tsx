@@ -1,9 +1,9 @@
-import { IconButton, Slider } from "@mui/material";
 import "./Settings.scss";
+import { IconButton, Slider } from "@mui/material";
 import { useEffect, useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { VolumeDown } from "@mui/icons-material";
-import { useStore } from "../store/hook";
+import { useStore } from "../../store/hook";
 
 function Modal() {
   const { state, dispatch } = useStore();

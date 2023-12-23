@@ -3,7 +3,7 @@ import "./Music.scss";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import PauseIcon from "@mui/icons-material/Pause";
 import { IconButton } from "@mui/material";
-import { useStore } from "../store/hook";
+import { useStore } from "../../store/hook";
 
 function Music() {
   const { state } = useStore();
