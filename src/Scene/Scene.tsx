@@ -47,7 +47,7 @@ function Scene() {
       <EnvironmentObjects />
       <Environment
         background
-        resolution={82}
+        resolution={256}
         children={<EnvironmentObjects environment />}
       />
     </Canvas>

@@ -1,4 +1,4 @@
-import { OctahedronGeometry } from "three";
+import { ExtrudeGeometry, Shape } from "three";
 import { Item } from "../../../types";
 import { useFrame } from "@react-three/fiber";
 
@@ -7,10 +7,25 @@ interface Props {
   handleClick: () => void;
 }
 
-function Crystal(props: Props) {
+function Star(props: Props) {
   const { item, handleClick } = props;
 
-  const geometry = new OctahedronGeometry(0.12, 0);
+  const starShape = new Shape();
+  starShape.moveTo(0, 0.5);
+  starShape.lineTo(0.15, 0.15);
+  starShape.lineTo(0.5, 0.1);
+  starShape.lineTo(0.25, -0.2);
+  starShape.lineTo(0.4, -0.6);
+  starShape.lineTo(0, -0.35);
+  starShape.lineTo(-0.4, -0.6);
+  starShape.lineTo(-0.25, -0.2);
+  starShape.lineTo(-0.5, 0.1);
+  starShape.lineTo(-0.15, 0.15);
+
+  const geometry = new ExtrudeGeometry(starShape, {
+    depth: 0.15,
+    bevelEnabled: false,
+  });
 
   const rotationOptions = {
     direction: Math.random() > 0.5 ? 1 : -1,
@@ -27,6 +42,7 @@ function Crystal(props: Props) {
       position={item.position}
       onClick={handleClick}
       rotation={[0, rotationOptions.rndYRotation, 0]}
+      scale={0.19}
     >
       <meshStandardMaterial
         color={item.activeElement ? "black" : item.color}
@@ -37,4 +53,4 @@ function Crystal(props: Props) {
   );
 }
 
-export default Crystal;
+export default Star;

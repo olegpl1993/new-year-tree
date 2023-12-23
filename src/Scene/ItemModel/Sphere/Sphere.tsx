@@ -13,7 +13,7 @@ function Sphere(props: Props) {
       <meshStandardMaterial
         color={item.activeElement ? "black" : item.color}
         metalness={0.95}
-        roughness={0.2}
+        roughness={0.15}
       />
     </mesh>
   );

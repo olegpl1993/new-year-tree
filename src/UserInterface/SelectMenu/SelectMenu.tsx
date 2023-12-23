@@ -11,13 +11,14 @@ function SelectMenu() {
 
   const [color, setColor] = useState("#ffffff");
 
-  const types = ["sphere", "light", "crystal"];
+  const types = ["sphere", "light", "crystal", "star"];
   const [selectedType, setSelectedType] = useState(0);
 
   const itemsLimit: Record<string, number> = {
     sphere: 20,
     light: 6,
     crystal: 15,
+    star: 15,
   };
 
   const intemsAtScene: Record<string, number> = items.reduce(

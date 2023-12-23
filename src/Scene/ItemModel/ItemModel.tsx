@@ -2,6 +2,7 @@ import { useStore } from "../../store/hook";
 import { Item } from "../../types";
 import Light from "./Light/Light";
 import Sphere from "./Sphere/Sphere";
+import Star from "./Star/Star";
 import Crystal from "./Сrystal/Crystal";
 
 interface Props {
@@ -30,6 +31,10 @@ function ItemModel(props: Props) {
 
   if (item.type === "crystal") {
     return <Crystal item={item} handleClick={handleClick} />;
+  }
+
+  if (item.type === "star") {
+    return <Star item={item} handleClick={handleClick} />;
   }
 }
 
