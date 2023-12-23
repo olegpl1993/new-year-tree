@@ -1,26 +1,25 @@
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
-import { Item } from "../../types";
+import { useStore } from "../../store/hook";
 
 interface Props {
   position: [number, number, number];
   scale: number;
-  items: Item[];
-  changeByIndex: (index: number, item: Item) => void;
 }
 
 function Tree(props: Props) {
-  const { position, scale, items, changeByIndex } = props;
+  const { position, scale } = props;
+  const { state, dispatch } = useStore();
+  const items = state.items.items;
+  const itemsHasActiveElement = items.some((item) => item.activeElement);
+
   const handleClick = (event: ThreeEvent<MouseEvent>) => {
-    items.map((item, index) => {
-      if (item.activeElement) {
-        changeByIndex(index, {
-          ...item,
-          position: [event.point.x, event.point.y, event.point.z],
-          activeElement: false,
-        });
-      }
-    });
+    if (itemsHasActiveElement) {
+      dispatch.items({
+        type: "MOVE_ACTIVE_ITEM",
+        payload: { position: [event.point.x, event.point.y, event.point.z] },
+      });
+    }
   };
 
   const fbx = useLoader(FBXLoader, "/models/tree/cgaxis_models_14_25.FBX");

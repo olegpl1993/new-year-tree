@@ -1,9 +1,9 @@
-import { IconButton, Slider } from "@mui/material";
 import "./Settings.scss";
+import { IconButton, Slider } from "@mui/material";
 import { useEffect, useState } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { VolumeDown } from "@mui/icons-material";
-import { useStore } from "../store/hook";
+import { useStore } from "../../store/hook";
 
 function Modal() {
   const { state, dispatch } = useStore();
@@ -18,11 +18,11 @@ function Modal() {
   });
 
   const handleChangeVolume = (_event: Event, newValue: number | number[]) => {
-    dispatch({ type: "SET_VOLUME", payload: newValue as number });
+    dispatch.settings({ type: "SET_VOLUME", payload: newValue as number });
   };
 
   const handleChangeTreeSize = (_event: Event, newValue: number | number[]) => {
-    dispatch({ type: "SET_TREE_SIZE", payload: newValue as number });
+    dispatch.settings({ type: "SET_TREE_SIZE", payload: newValue as number });
   };
 
   return (
@@ -64,12 +64,12 @@ function Modal() {
 
                   <Slider
                     aria-label="Volume"
-                    value={state.volume}
+                    value={state.settings.volume}
                     onChange={handleChangeVolume}
                     sx={{ color: "rgb(225, 97, 97)" }}
                   />
 
-                  <p className="settings__value">{state.volume}%</p>
+                  <p className="settings__value">{state.settings.volume}%</p>
                 </div>
 
                 <div className="settings__row">
@@ -77,12 +77,12 @@ function Modal() {
 
                   <Slider
                     aria-label="Volume"
-                    value={state.treeSize}
+                    value={state.settings.treeSize}
                     onChange={handleChangeTreeSize}
                     sx={{ color: "rgb(225, 97, 97)" }}
                   />
 
-                  <p className="settings__value">{state.treeSize}%</p>
+                  <p className="settings__value">{state.settings.treeSize}%</p>
                 </div>
               </div>
             </div>

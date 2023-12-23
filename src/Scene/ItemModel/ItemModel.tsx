@@ -1,3 +1,4 @@
+import { useStore } from "../../store/hook";
 import { Item } from "../../types";
 import Light from "./Light/Light";
 import Sphere from "./Sphere/Sphere";
@@ -6,16 +7,16 @@ import Crystal from "./Сrystal/Crystal";
 interface Props {
   item: Item;
   index: number;
-  changeByIndex: (index: number, item: Item) => void;
 }
 
 function ItemModel(props: Props) {
-  const { item, index, changeByIndex } = props;
+  const { item, index } = props;
+  const { dispatch } = useStore();
 
   const handleClick = () => {
-    changeByIndex(index, {
-      ...item,
-      activeElement: !item.activeElement,
+    dispatch.items({
+      type: "SET_ACTIVE_ITEM",
+      payload: { index },
     });
   };
 

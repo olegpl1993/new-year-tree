@@ -1,25 +1,21 @@
 import { useState } from "react";
-import { Item } from "../types";
 import "./SelectMenu.scss";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Button, IconButton } from "@mui/material";
+import { useStore } from "../../store/hook";
 
-interface Props {
-  addItem: (sphere: Item) => void;
-  deleteActiveItem: () => void;
-  items: Item[];
-}
+function SelectMenu() {
+  const { state, dispatch } = useStore();
+  const items = state.items.items;
 
-function SelectMenu(props: Props) {
-  const { addItem, deleteActiveItem, items } = props;
   const [color, setColor] = useState("#ffffff");
 
   const types = ["sphere", "light", "crystal"];
   const [selectedType, setSelectedType] = useState(0);
 
   const itemsLimit: Record<string, number> = {
-    sphere: 15,
+    sphere: 20,
     light: 6,
     crystal: 15,
   };
@@ -39,11 +35,17 @@ function SelectMenu(props: Props) {
 
   const handleAddItem = () => {
     if (remainingItems[types[selectedType]] <= 0) return;
-    addItem({
-      type: types[selectedType],
-      position: [1, 2, 1],
-      color,
-      activeElement: true,
+
+    dispatch.items({
+      type: "ADD_ITEM",
+      payload: {
+        item: {
+          type: types[selectedType],
+          position: [1, 2, 1],
+          color,
+          activeElement: true,
+        },
+      },
     });
   };
 
@@ -62,6 +64,10 @@ function SelectMenu(props: Props) {
   const [visible, setVisible] = useState(true);
   const handleVisible = () => {
     setVisible(!visible);
+  };
+
+  const handleDeleteActiveItem = () => {
+    dispatch.items({ type: "DELETE_ACTIVE_ITEM" });
   };
 
   return (
@@ -140,7 +146,7 @@ function SelectMenu(props: Props) {
           </div>
 
           <Button
-            onClick={deleteActiveItem}
+            onClick={handleDeleteActiveItem}
             variant="contained"
             sx={{
               width: "75px",

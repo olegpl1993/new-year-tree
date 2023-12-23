@@ -1,27 +1,45 @@
 import React, { createContext, useReducer } from "react";
-import { settingsSlice } from "./slices/settingsSlice";
-
-interface State {
-  volume: number;
-  treeSize: number;
-}
+import { SettingsState, settingsSlice } from "./slices/settingsSlice";
+import { ItemsPayload, ItemsState, itemsSlice } from "./slices/itemsSlice";
 
 export const StoreContext = createContext<
   | {
-      state: State;
-      dispatch: React.Dispatch<{ type: string; payload?: number }>;
+      state: {
+        settings: SettingsState;
+        items: ItemsState;
+      };
+      dispatch: {
+        settings: React.Dispatch<{ type: string; payload?: number }>;
+        items: React.Dispatch<{ type: string; payload?: ItemsPayload }>;
+      };
     }
   | undefined
 >(undefined);
 
 export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
-  const [state, dispatch] = useReducer(
+  const [settings, dispatchSettings] = useReducer(
     settingsSlice.reducer,
     settingsSlice.initialState
   );
 
+  const [items, dispatchItems] = useReducer(
+    itemsSlice.reducer,
+    itemsSlice.initialState
+  );
+
   return (
-    <StoreContext.Provider value={{ state, dispatch }}>
+    <StoreContext.Provider
+      value={{
+        state: {
+          settings,
+          items,
+        },
+        dispatch: {
+          settings: dispatchSettings,
+          items: dispatchItems,
+        },
+      }}
+    >
       {children}
     </StoreContext.Provider>
   );
