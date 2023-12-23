@@ -2,18 +2,12 @@ import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import Tree from "./Tree/Tree";
 import ItemModel from "./ItemModel/ItemModel";
-import { Item } from "../types";
 import EnvironmentObjects from "./EnvironmentObjects/EnvironmentObjects";
 import { useStore } from "../store/hook";
 
-interface Props {
-  items: Item[];
-  changeByIndex: (index: number, item: Item) => void;
-}
-
-function Scene(props: Props) {
-  const { items, changeByIndex } = props;
+function Scene() {
   const { state } = useStore();
+  const items = state.items.items;
 
   const treeSizeToScale = (size: number) => {
     const minSize = 0;
@@ -31,8 +25,6 @@ function Scene(props: Props) {
       <Tree
         position={[0, 0, 0]}
         scale={treeSizeToScale(state.settings.treeSize)}
-        items={items}
-        changeByIndex={changeByIndex}
       />
 
       {items.map((item, index) => (
@@ -40,7 +32,6 @@ function Scene(props: Props) {
           key={index}
           item={item}
           index={index}
-          changeByIndex={changeByIndex}
         />
       ))}
 
