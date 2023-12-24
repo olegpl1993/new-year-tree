@@ -1,47 +1,49 @@
-import { useState } from "react";
 import "./SelectMenu.scss";
+import { useEffect, useState } from "react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Button, IconButton } from "@mui/material";
 import { useStore } from "../../store/hook";
+import { ITEMS_LIMIT, ITEMS_TYPE } from "../../constants";
 
 function SelectMenu() {
   const { state, dispatch } = useStore();
   const items = state.items.items;
+  const isWin = state.game.isWin;
 
   const [color, setColor] = useState("#ffffff");
-
-  const types = ["sphere", "light", "crystal", "star"];
   const [selectedType, setSelectedType] = useState(0);
+  const [visible, setVisible] = useState(true);
 
-  const itemsLimit: Record<string, number> = {
-    sphere: 20,
-    light: 6,
-    crystal: 15,
-    star: 15,
-  };
+  useEffect(() => {
+    if (isWin) {
+      setVisible(false);
+    }
+  }, [isWin]);
 
   const intemsAtScene: Record<string, number> = items.reduce(
     (acc, item) => ({ ...acc, [item.type]: (acc[item.type] || 0) + 1 }),
     {} as Record<string, number>
   );
 
-  const remainingItems: Record<string, number> = Object.keys(itemsLimit).reduce(
+  const remainingItems: Record<string, number> = Object.keys(
+    ITEMS_LIMIT
+  ).reduce(
     (acc, type) => ({
       ...acc,
-      [type]: itemsLimit[type] - (intemsAtScene[type] || 0),
+      [type]: ITEMS_LIMIT[type] - (intemsAtScene[type] || 0),
     }),
     {} as Record<string, number>
   );
 
   const handleAddItem = () => {
-    if (remainingItems[types[selectedType]] <= 0) return;
+    if (remainingItems[ITEMS_TYPE[selectedType]] <= 0) return;
 
     dispatch.items({
       type: "ADD_ITEM",
       payload: {
         item: {
-          type: types[selectedType],
+          type: ITEMS_TYPE[selectedType],
           position: [1, 2, 1],
           color,
           activeElement: true,
@@ -57,12 +59,11 @@ function SelectMenu() {
   const handleSelectType = (selector: string) => {
     setSelectedType(
       selector === "<"
-        ? (selectedType - 1 + types.length) % types.length
-        : (selectedType + 1) % types.length
+        ? (selectedType - 1 + ITEMS_TYPE.length) % ITEMS_TYPE.length
+        : (selectedType + 1) % ITEMS_TYPE.length
     );
   };
 
-  const [visible, setVisible] = useState(true);
   const handleVisible = () => {
     setVisible(!visible);
   };
@@ -82,7 +83,7 @@ function SelectMenu() {
       {visible && (
         <div className="selectMenu__wrapper">
           <div className="selectMenu__itemsLimit">
-            {remainingItems[types[selectedType]]}
+            {remainingItems[ITEMS_TYPE[selectedType]]}
           </div>
 
           <div className="selectMenu__colorPicker">
@@ -128,7 +129,7 @@ function SelectMenu() {
                 },
               }}
             >
-              {types[selectedType]}
+              {ITEMS_TYPE[selectedType]}
             </Button>
 
             <IconButton

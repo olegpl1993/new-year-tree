@@ -9,6 +9,7 @@ import Stand from "./Stand/Stand";
 import Present from "./Present/Present";
 import Bells from "./Bells/Bells";
 import { useStore } from "../../store/hook";
+import { useEffect, useState } from "react";
 
 interface Props {
   environment?: boolean;
@@ -16,8 +17,19 @@ interface Props {
 
 function EnvironmentObjects(props: Props) {
   const { environment } = props;
-  const { state } = useStore();
+  const { state, dispatch } = useStore();
   const light = state.settings.light;
+  const isWin = state.game.isWin;
+
+  const [pointLightIntensity, setPointLightIntensity] = useState(30);
+
+  useEffect(() => {
+    if (isWin) {
+      dispatch.settings({ type: "SET_LIGHT", payload: 0 });
+      setPointLightIntensity(50);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isWin]);
 
   const lightToIntensity = (light: number) => {
     const minLight = 0;
@@ -35,10 +47,26 @@ function EnvironmentObjects(props: Props) {
     <group position={environment ? [0, -1.75, 0] : [0, 0, 0]}>
       {environment ? null : (
         <>
-          <PointLight position={[2, 4.5, 2]} color="red" intensity={30} />
-          <PointLight position={[-2, 4.5, 2]} color="blue" intensity={30} />
-          <PointLight position={[2, 4.5, -2]} color="green" intensity={30} />
-          <PointLight position={[-2, 4.5, -2]} color="orange" intensity={30} />
+          <PointLight
+            position={[2, 4.5, 2]}
+            color="red"
+            intensity={pointLightIntensity}
+          />
+          <PointLight
+            position={[-2, 4.5, 2]}
+            color="blue"
+            intensity={pointLightIntensity}
+          />
+          <PointLight
+            position={[2, 4.5, -2]}
+            color="green"
+            intensity={pointLightIntensity}
+          />
+          <PointLight
+            position={[-2, 4.5, -2]}
+            color="orange"
+            intensity={pointLightIntensity}
+          />
 
           <Bells position={[4.9, 2, 3]} rotation={[0, -1.57, 0]} scale={0.01} />
           <Bells
