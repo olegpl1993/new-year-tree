@@ -1,6 +1,7 @@
 import { OctahedronGeometry } from "three";
 import { Item } from "../../../types";
 import { useFrame } from "@react-three/fiber";
+import { useRef, useState } from "react";
 
 interface Props {
   item: Item;
@@ -10,20 +11,20 @@ interface Props {
 function Crystal(props: Props) {
   const { item, handleClick } = props;
 
-  const geometry = new OctahedronGeometry(0.12, 0);
-
-  const rotationOptions = {
+  const [rotationOptions] = useState({
     direction: Math.random() > 0.5 ? 1 : -1,
     rndYRotation: Math.random() * Math.PI * 2,
-  };
+  });
+
+  const geometryRef = useRef(new OctahedronGeometry(0.12, 0));
 
   useFrame(() => {
-    geometry.rotateY(0.005 * rotationOptions.direction);
+    geometryRef.current.rotateY(0.003 * rotationOptions.direction);
   });
 
   return (
     <mesh
-      geometry={geometry}
+      geometry={geometryRef.current}
       position={item.position}
       onClick={handleClick}
       rotation={[0, rotationOptions.rndYRotation, 0]}
