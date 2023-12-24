@@ -1,9 +1,10 @@
-import { useState } from "react";
 import "./SelectMenu.scss";
+import { useState } from "react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Button, IconButton } from "@mui/material";
 import { useStore } from "../../store/hook";
+import { itemsLimit, itemTypes } from "../../constants";
 
 function SelectMenu() {
   const { state, dispatch } = useStore();
@@ -11,15 +12,7 @@ function SelectMenu() {
 
   const [color, setColor] = useState("#ffffff");
 
-  const types = ["sphere", "light", "crystal", "star"];
   const [selectedType, setSelectedType] = useState(0);
-
-  const itemsLimit: Record<string, number> = {
-    sphere: 20,
-    light: 6,
-    crystal: 15,
-    star: 15,
-  };
 
   const intemsAtScene: Record<string, number> = items.reduce(
     (acc, item) => ({ ...acc, [item.type]: (acc[item.type] || 0) + 1 }),
@@ -35,13 +28,13 @@ function SelectMenu() {
   );
 
   const handleAddItem = () => {
-    if (remainingItems[types[selectedType]] <= 0) return;
+    if (remainingItems[itemTypes[selectedType]] <= 0) return;
 
     dispatch.items({
       type: "ADD_ITEM",
       payload: {
         item: {
-          type: types[selectedType],
+          type: itemTypes[selectedType],
           position: [1, 2, 1],
           color,
           activeElement: true,
@@ -57,8 +50,8 @@ function SelectMenu() {
   const handleSelectType = (selector: string) => {
     setSelectedType(
       selector === "<"
-        ? (selectedType - 1 + types.length) % types.length
-        : (selectedType + 1) % types.length
+        ? (selectedType - 1 + itemTypes.length) % itemTypes.length
+        : (selectedType + 1) % itemTypes.length
     );
   };
 
@@ -82,7 +75,7 @@ function SelectMenu() {
       {visible && (
         <div className="selectMenu__wrapper">
           <div className="selectMenu__itemsLimit">
-            {remainingItems[types[selectedType]]}
+            {remainingItems[itemTypes[selectedType]]}
           </div>
 
           <div className="selectMenu__colorPicker">
@@ -128,7 +121,7 @@ function SelectMenu() {
                 },
               }}
             >
-              {types[selectedType]}
+              {itemTypes[selectedType]}
             </Button>
 
             <IconButton
