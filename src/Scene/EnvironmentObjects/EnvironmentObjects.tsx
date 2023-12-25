@@ -21,7 +21,7 @@ function EnvironmentObjects(props: Props) {
   const light = state.settings.light;
   const isWin = state.game.isWin;
 
-  const [pointLightIntensity, setPointLightIntensity] = useState(30);
+  const [pointLightIntensity, setPointLightIntensity] = useState(15);
 
   useEffect(() => {
     if (isWin) {
@@ -35,7 +35,7 @@ function EnvironmentObjects(props: Props) {
     const minLight = 0;
     const maxLight = 100;
     const minIntensity = 0;
-    const maxIntensity = 3;
+    const maxIntensity = 4;
     return (
       ((light - minLight) / (maxLight - minLight)) *
         (maxIntensity - minIntensity) +
