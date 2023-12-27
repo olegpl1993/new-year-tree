@@ -2,7 +2,7 @@
 
 ## Description
 
-"New Year Tree" is a charming 3D game where you can let your creativity shine and experience the enchantment of Christmas. Your goal is to decorate a beautiful 3D Christmas tree with a range of festive ornaments.
+New Year Tree - invites you to unleash your creativity and experience the enchantment of Christmas as you decorate a charming 3D Christmas tree with a variety of festive ornaments.
 
 ## Tech Stack
 
