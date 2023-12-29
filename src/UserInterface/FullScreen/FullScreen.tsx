@@ -25,9 +25,9 @@ function FullScreen() {
     <div className="fullScreen">
       <IconButton onClick={handleClick} sx={{ color: "rgb(225, 97, 97)" }}>
         {isFullScreen ? (
-          <FullscreenExitIcon fontSize="large" />
+          <FullscreenExitIcon />
         ) : (
-          <FullscreenIcon fontSize="large" />
+          <FullscreenIcon />
         )}
       </IconButton>
     </div>
