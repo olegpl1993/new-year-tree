@@ -1,3 +1,4 @@
+import FullScreen from "./FullScreen/FullScreen";
 import Music from "./Music/Music";
 import Progressbar from "./Progressbar/Progressbar";
 import SelectMenu from "./SelectMenu/SelectMenu";
@@ -8,6 +9,7 @@ function UserInterface() {
     <>
       <SelectMenu />
       <Music />
+      <FullScreen />
       <Settings />
       <Progressbar />
     </>
