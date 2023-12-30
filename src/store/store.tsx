@@ -11,7 +11,7 @@ export const StoreContext = createContext<
         game: GameState;
       };
       dispatch: {
-        settings: React.Dispatch<{ type: string; payload?: number }>;
+        settings: React.Dispatch<{ type: string; payload?: number | string }>;
         items: React.Dispatch<{ type: string; payload?: ItemsPayload }>;
         game: React.Dispatch<{ type: string; payload?: boolean }>;
       };

@@ -1,6 +1,17 @@
 :root {
-  --primary-color: rgb(225, 97, 97);
   --background-color-layer: rgb(240, 240, 240);
+}
+
+:root[data-theme-color="#e16161"] {
+  --primary-color: #e16161;
+}
+
+:root[data-theme-color="#6167e1"] {
+  --primary-color: #6167e1;
+}
+
+:root[data-theme-color="#639c63"] {
+  --primary-color: #639c63;
 }
 
 body {
