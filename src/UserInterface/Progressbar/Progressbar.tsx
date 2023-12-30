@@ -8,6 +8,7 @@ function Progressbar() {
   const { state } = useStore();
   const isWin = state.game.isWin;
   const items = state.items.items;
+  const themeColor = state.settings.themeColor;
 
   const [progress, setProgress] = useState(0);
 
@@ -32,7 +33,7 @@ function Progressbar() {
           className="progressbar__icon"
           style={{ left: `${progress - 10}%` }}
         >
-          <ParkIcon sx={{ color: "rgb(225, 97, 97)", fontSize: "26px" }} />
+          <ParkIcon sx={{ color: themeColor, fontSize: "26px" }} />
         </div>
       </div>
     );

@@ -9,6 +9,7 @@ function Music() {
   const { state } = useStore();
   const isWin = state.game.isWin;
   const volume = state.settings.volume;
+  const themeColor = state.settings.themeColor;
 
   const [isMusicPlay, setIsMusicPlay] = useState(false);
   const audioRef = useRef(new Audio("/music/muz.mp3"));
@@ -33,7 +34,7 @@ function Music() {
 
   return (
     <div className="music">
-      <IconButton onClick={handleClick} sx={{ color: "rgb(225, 97, 97)" }}>
+      <IconButton onClick={handleClick} sx={{ color: themeColor }}>
         {isMusicPlay ? <PauseIcon /> : <AudiotrackIcon />}
       </IconButton>
     </div>

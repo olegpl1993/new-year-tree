@@ -10,8 +10,13 @@ function Modal() {
   const light = state.settings.light;
   const volume = state.settings.volume;
   const treeSize = state.settings.treeSize;
+  const themeColor = state.settings.themeColor;
 
   const [modalActive, setModalActive] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.dataset.themeColor = themeColor;
+  }, [themeColor]);
 
   useEffect(() => {
     document.body.style.overflow = modalActive ? "hidden" : "auto";
@@ -32,12 +37,16 @@ function Modal() {
     dispatch.settings({ type: "SET_LIGHT", payload: newValue as number });
   };
 
+  const handleChangeThemeColor = (color: string) => {
+    dispatch.settings({ type: "SET_THEME_COLOR", payload: color });
+  };
+
   return (
     <div className="settings">
       <div className="settings__openButton">
         <IconButton
           onClick={() => setModalActive(true)}
-          sx={{ color: "rgb(225, 97, 97)" }}
+          sx={{ color: themeColor }}
         >
           <SettingsIcon />
         </IconButton>
@@ -67,7 +76,7 @@ function Modal() {
                   <p className="settings__subtitle">
                     <VolumeDown
                       fontSize="large"
-                      sx={{ color: "rgb(225, 97, 97)" }}
+                      sx={{ color: themeColor }}
                     />
                   </p>
 
@@ -75,7 +84,7 @@ function Modal() {
                     aria-label="Volume"
                     value={volume}
                     onChange={handleChangeVolume}
-                    sx={{ color: "rgb(225, 97, 97)" }}
+                    sx={{ color: themeColor }}
                   />
 
                   <p className="settings__value">{volume}%</p>
@@ -88,7 +97,7 @@ function Modal() {
                     aria-label="Volume"
                     value={treeSize}
                     onChange={handleChangeTreeSize}
-                    sx={{ color: "rgb(225, 97, 97)" }}
+                    sx={{ color: themeColor }}
                   />
 
                   <p className="settings__value">{treeSize}%</p>
@@ -101,10 +110,26 @@ function Modal() {
                     aria-label="Volume"
                     value={light}
                     onChange={handleChangeLight}
-                    sx={{ color: "rgb(225, 97, 97)" }}
+                    sx={{ color: themeColor }}
                   />
 
                   <p className="settings__value">{light}%</p>
+                </div>
+
+                <div className="settings__row">
+                  <p className="settings__subtitle">Theme color</p>
+                  <button
+                    className="settings__themeButton settings__themeButton-red"
+                    onClick={() => handleChangeThemeColor("#e16161")}
+                  />
+                  <button
+                    className="settings__themeButton settings__themeButton-blue"
+                    onClick={() => handleChangeThemeColor("#6167e1")}
+                  />
+                  <button
+                    className="settings__themeButton settings__themeButton-green"
+                    onClick={() => handleChangeThemeColor("#639c63")}
+                  />
                 </div>
               </div>
             </div>

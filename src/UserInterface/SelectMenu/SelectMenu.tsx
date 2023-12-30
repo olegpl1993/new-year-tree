@@ -10,6 +10,7 @@ function SelectMenu() {
   const { state, dispatch } = useStore();
   const items = state.items.items;
   const isWin = state.game.isWin;
+  const themeColor = state.settings.themeColor;
 
   const [color, setColor] = useState("#ffffff");
   const [selectedType, setSelectedType] = useState(0);
@@ -75,7 +76,7 @@ function SelectMenu() {
   return (
     <div className="selectMenu">
       <div className="selectMenu__visible">
-        <IconButton onClick={handleVisible} sx={{ color: "rgb(225, 97, 97)" }}>
+        <IconButton onClick={handleVisible} sx={{ color: themeColor }}>
           {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
         </IconButton>
       </div>
@@ -104,7 +105,7 @@ function SelectMenu() {
                 height: "37px",
                 width: "37px",
                 fontSize: "30px",
-                color: "rgb(225, 97, 97)",
+                color: themeColor,
                 fontFamily: "Arial",
               }}
             >
@@ -121,10 +122,10 @@ function SelectMenu() {
                 fontSize: "15px",
                 fontFamily: "Pacifico",
                 textTransform: "none",
-                backgroundColor: "rgb(225, 97, 97)",
+                backgroundColor: themeColor,
                 boxShadow: "none",
                 "&:hover": {
-                  backgroundColor: "rgb(225, 97, 97)",
+                  backgroundColor: themeColor,
                   boxShadow: "none",
                 },
               }}
@@ -139,7 +140,7 @@ function SelectMenu() {
                 height: "37px",
                 width: "37px",
                 fontSize: "30px",
-                color: "rgb(225, 97, 97)",
+                color: themeColor,
                 fontFamily: "Arial",
               }}
             >
@@ -157,10 +158,10 @@ function SelectMenu() {
               fontSize: "15px",
               fontFamily: "Pacifico",
               textTransform: "none",
-              backgroundColor: "rgb(225, 97, 97)",
+              backgroundColor: themeColor,
               boxShadow: "none",
               "&:hover": {
-                backgroundColor: "rgb(225, 97, 97)",
+                backgroundColor: themeColor,
                 boxShadow: "none",
               },
             }}
