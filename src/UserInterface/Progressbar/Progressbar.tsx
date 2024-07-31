@@ -1,14 +1,13 @@
-import "./Progressbar.scss";
-import { useEffect, useState } from "react";
 import ParkIcon from "@mui/icons-material/Park";
-import { useStore } from "../../store/hook";
+import { useEffect, useState } from "react";
 import { ITEMS_LIMIT } from "../../constants";
+import { useStore } from "../../store/hook";
+import "./Progressbar.scss";
 
 function Progressbar() {
   const { state } = useStore();
   const isWin = state.game.isWin;
   const items = state.items.items;
-  const themeColor = state.settings.themeColor;
 
   const [progress, setProgress] = useState(0);
 
@@ -33,7 +32,7 @@ function Progressbar() {
           className="progressbar__icon"
           style={{ left: `${progress - 10}%` }}
         >
-          <ParkIcon sx={{ color: themeColor, fontSize: "26px" }} />
+          <ParkIcon sx={{ color: "var(--primary-color)", fontSize: "26px" }} />
         </div>
       </div>
     );

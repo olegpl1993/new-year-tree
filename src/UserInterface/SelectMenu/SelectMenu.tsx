@@ -1,16 +1,15 @@
-import "./SelectMenu.scss";
-import { useEffect, useState } from "react";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Button, IconButton } from "@mui/material";
-import { useStore } from "../../store/hook";
+import { useEffect, useState } from "react";
 import { ITEMS_LIMIT, ITEMS_TYPE } from "../../constants";
+import { useStore } from "../../store/hook";
+import "./SelectMenu.scss";
 
 function SelectMenu() {
   const { state, dispatch } = useStore();
   const items = state.items.items;
   const isWin = state.game.isWin;
-  const themeColor = state.settings.themeColor;
 
   const [color, setColor] = useState("#ffffff");
   const [selectedType, setSelectedType] = useState(0);
@@ -76,7 +75,10 @@ function SelectMenu() {
   return (
     <div className="selectMenu">
       <div className="selectMenu__visible">
-        <IconButton onClick={handleVisible} sx={{ color: themeColor }}>
+        <IconButton
+          onClick={handleVisible}
+          sx={{ color: "var(--primary-color)" }}
+        >
           {visible ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
         </IconButton>
       </div>
@@ -105,7 +107,7 @@ function SelectMenu() {
                 height: "37px",
                 width: "37px",
                 fontSize: "30px",
-                color: themeColor,
+                color: "var(--primary-color)",
                 fontFamily: "Arial",
               }}
             >
@@ -122,10 +124,10 @@ function SelectMenu() {
                 fontSize: "15px",
                 fontFamily: "Pacifico",
                 textTransform: "none",
-                backgroundColor: themeColor,
+                backgroundColor: "var(--primary-color)",
                 boxShadow: "none",
                 "&:hover": {
-                  backgroundColor: themeColor,
+                  backgroundColor: "var(--primary-color)",
                   boxShadow: "none",
                 },
               }}
@@ -140,7 +142,7 @@ function SelectMenu() {
                 height: "37px",
                 width: "37px",
                 fontSize: "30px",
-                color: themeColor,
+                color: "var(--primary-color)",
                 fontFamily: "Arial",
               }}
             >
@@ -158,10 +160,10 @@ function SelectMenu() {
               fontSize: "15px",
               fontFamily: "Pacifico",
               textTransform: "none",
-              backgroundColor: themeColor,
+              backgroundColor: "var(--primary-color)",
               boxShadow: "none",
               "&:hover": {
-                backgroundColor: themeColor,
+                backgroundColor: "var(--primary-color)",
                 boxShadow: "none",
               },
             }}

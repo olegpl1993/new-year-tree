@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import "./Music.scss";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import PauseIcon from "@mui/icons-material/Pause";
 import { IconButton } from "@mui/material";
+import { useEffect, useRef, useState } from "react";
 import { useStore } from "../../store/hook";
+import "./Music.scss";
 
 function Music() {
   const { state } = useStore();
   const isWin = state.game.isWin;
   const volume = state.settings.volume;
-  const themeColor = state.settings.themeColor;
 
   const [isMusicPlay, setIsMusicPlay] = useState(false);
   const audioRef = useRef(new Audio("/music/muz.mp3"));
@@ -34,7 +33,7 @@ function Music() {
 
   return (
     <div className="music">
-      <IconButton onClick={handleClick} sx={{ color: themeColor }}>
+      <IconButton onClick={handleClick} sx={{ color: "var(--primary-color)" }}>
         {isMusicPlay ? <PauseIcon /> : <AudiotrackIcon />}
       </IconButton>
     </div>

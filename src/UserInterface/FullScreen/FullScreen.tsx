@@ -1,9 +1,8 @@
-import "./FullScreen.scss";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { useStore } from "../../store/hook";
+import "./FullScreen.scss";
 
 const fullScreenChanger = (isFullScreen: boolean) => {
   if (isFullScreen) {
@@ -15,9 +14,6 @@ const fullScreenChanger = (isFullScreen: boolean) => {
 };
 
 function FullScreen() {
-  const { state } = useStore();
-  const themeColor = state.settings.themeColor;
-
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const handleClick = () => {
@@ -27,7 +23,7 @@ function FullScreen() {
 
   return (
     <div className="fullScreen">
-      <IconButton onClick={handleClick} sx={{ color: themeColor }}>
+      <IconButton onClick={handleClick} sx={{ color: "var(--primary-color)" }}>
         {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
       </IconButton>
     </div>
