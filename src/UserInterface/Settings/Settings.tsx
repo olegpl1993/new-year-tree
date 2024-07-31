@@ -1,22 +1,17 @@
-import "./Settings.scss";
+import { VolumeDown } from "@mui/icons-material";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { IconButton, Slider } from "@mui/material";
 import { useEffect, useState } from "react";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { VolumeDown } from "@mui/icons-material";
 import { useStore } from "../../store/hook";
+import "./Settings.scss";
 
 function Modal() {
   const { state, dispatch } = useStore();
   const light = state.settings.light;
   const volume = state.settings.volume;
   const treeSize = state.settings.treeSize;
-  const themeColor = state.settings.themeColor;
 
   const [modalActive, setModalActive] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.dataset.themeColor = themeColor;
-  }, [themeColor]);
 
   useEffect(() => {
     document.body.style.overflow = modalActive ? "hidden" : "auto";
@@ -38,7 +33,7 @@ function Modal() {
   };
 
   const handleChangeThemeColor = (color: string) => {
-    dispatch.settings({ type: "SET_THEME_COLOR", payload: color });
+    document.documentElement.style.setProperty("--primary-color", color);
   };
 
   return (
@@ -46,7 +41,7 @@ function Modal() {
       <div className="settings__openButton">
         <IconButton
           onClick={() => setModalActive(true)}
-          sx={{ color: themeColor }}
+          sx={{ color: "var(--primary-color)" }}
         >
           <SettingsIcon />
         </IconButton>
@@ -76,7 +71,7 @@ function Modal() {
                   <p className="settings__subtitle">
                     <VolumeDown
                       fontSize="large"
-                      sx={{ color: themeColor }}
+                      sx={{ color: "var(--primary-color)" }}
                     />
                   </p>
 
@@ -84,7 +79,7 @@ function Modal() {
                     aria-label="Volume"
                     value={volume}
                     onChange={handleChangeVolume}
-                    sx={{ color: themeColor }}
+                    sx={{ color: "var(--primary-color)" }}
                   />
 
                   <p className="settings__value">{volume}%</p>
@@ -97,7 +92,7 @@ function Modal() {
                     aria-label="Volume"
                     value={treeSize}
                     onChange={handleChangeTreeSize}
-                    sx={{ color: themeColor }}
+                    sx={{ color: "var(--primary-color)" }}
                   />
 
                   <p className="settings__value">{treeSize}%</p>
@@ -110,7 +105,7 @@ function Modal() {
                     aria-label="Volume"
                     value={light}
                     onChange={handleChangeLight}
-                    sx={{ color: themeColor }}
+                    sx={{ color: "var(--primary-color)" }}
                   />
 
                   <p className="settings__value">{light}%</p>
