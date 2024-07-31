@@ -25,7 +25,7 @@ function EnvironmentObjects(props: Props) {
 
   useEffect(() => {
     if (isWin) {
-      dispatch.settings({ type: "SET_LIGHT", payload: 0 });
+      dispatch.settings({ type: "SET_LIGHT", payload: 5 });
       setPointLightIntensity(50);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
