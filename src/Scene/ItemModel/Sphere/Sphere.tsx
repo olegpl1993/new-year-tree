@@ -1,4 +1,4 @@
-import { Item } from "../../../types";
+import { Item } from "../../../shared/types";
 
 interface Props {
   item: Item;

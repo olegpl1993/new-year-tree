@@ -1,15 +1,15 @@
-import PointLight from "./PointLight/PointLight";
-import Door from "./Door/Door";
-import Poster from "./Poster/Poster";
+import { useEffect, useState } from "react";
+import { useStore } from "../../app/store/hook";
+import Bells from "./Bells/Bells";
 import Box from "./Box/Box";
+import Door from "./Door/Door";
 import Floor from "./Floor/Floor";
 import Floor2 from "./Floor2/Floor2";
-import Window from "./Window/Window";
-import Stand from "./Stand/Stand";
+import PointLight from "./PointLight/PointLight";
+import Poster from "./Poster/Poster";
 import Present from "./Present/Present";
-import Bells from "./Bells/Bells";
-import { useStore } from "../../store/hook";
-import { useEffect, useState } from "react";
+import Stand from "./Stand/Stand";
+import Window from "./Window/Window";
 
 interface Props {
   environment?: boolean;

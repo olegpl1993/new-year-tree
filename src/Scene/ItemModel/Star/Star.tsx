@@ -1,7 +1,7 @@
-import { ExtrudeGeometry, Shape } from "three";
-import { Item } from "../../../types";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
+import { ExtrudeGeometry, Shape } from "three";
+import { Item } from "../../../shared/types";
 
 interface Props {
   item: Item;

@@ -1,9 +1,9 @@
-import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
-import Tree from "./Tree/Tree";
-import ItemModel from "./ItemModel/ItemModel";
+import { Canvas } from "@react-three/fiber";
+import { useStore } from "../app/store/hook";
 import EnvironmentObjects from "./EnvironmentObjects/EnvironmentObjects";
-import { useStore } from "../store/hook";
+import ItemModel from "./ItemModel/ItemModel";
+import Tree from "./Tree/Tree";
 
 function Scene() {
   const { state } = useStore();
