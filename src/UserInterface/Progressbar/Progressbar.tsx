@@ -1,7 +1,7 @@
 import ParkIcon from "@mui/icons-material/Park";
 import { useEffect, useState } from "react";
-import { ITEMS_LIMIT } from "../../constants";
-import { useStore } from "../../store/hook";
+import { useStore } from "../../app/store/hook";
+import { ITEMS_LIMIT } from "../../shared/constants";
 import "./Progressbar.scss";
 
 function Progressbar() {

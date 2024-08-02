@@ -2,8 +2,8 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Button, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
-import { ITEMS_LIMIT, ITEMS_TYPE } from "../../constants";
-import { useStore } from "../../store/hook";
+import { useStore } from "../../app/store/hook";
+import { ITEMS_LIMIT, ITEMS_TYPE } from "../../shared/constants";
 import "./SelectMenu.scss";
 
 function SelectMenu() {

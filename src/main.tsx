@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import App from "./app/App.tsx";
+import { StoreProvider } from "./app/store/store.tsx";
 import "./index.scss";
-import { StoreProvider } from "./store/store.tsx";
+import "./shared/variables.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

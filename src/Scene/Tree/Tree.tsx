@@ -1,7 +1,7 @@
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
-import { useStore } from "../../store/hook";
-import { ITEMS_LIMIT } from "../../constants";
+import { useStore } from "../../app/store/hook";
+import { ITEMS_LIMIT } from "../../shared/constants";
 
 interface Props {
   position: [number, number, number];
