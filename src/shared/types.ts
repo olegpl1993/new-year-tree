@@ -3,4 +3,5 @@ export type Item = {
   position: [number, number, number];
   color: string;
   activeElement: boolean;
+  id: number;
 };

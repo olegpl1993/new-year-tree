@@ -1,6 +1,6 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useStore } from "../app/store/hook";
+import { useStore } from "../app/store/useStore";
 import EnvironmentObjects from "./EnvironmentObjects/EnvironmentObjects";
 import ItemModel from "./ItemModel/ItemModel";
 import Tree from "./Tree/Tree";
@@ -26,7 +26,7 @@ function Scene() {
       <Tree position={[0, 0, 0]} scale={treeSizeToScale(treeSize)} />
 
       {items.map((item, index) => (
-        <ItemModel key={index} item={item} index={index} />
+        <ItemModel key={item.id} item={item} index={index} />
       ))}
 
       <OrbitControls

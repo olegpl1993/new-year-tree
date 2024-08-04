@@ -1,4 +1,4 @@
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import { Item } from "../../shared/types";
 import Light from "./Light/Light";
 import Sphere from "./Sphere/Sphere";

@@ -1,6 +1,6 @@
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import { ITEMS_LIMIT } from "../../shared/constants";
 
 interface Props {
