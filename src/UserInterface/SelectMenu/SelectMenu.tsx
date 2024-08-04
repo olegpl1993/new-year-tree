@@ -2,7 +2,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Button, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import { ITEMS_LIMIT, ITEMS_TYPE } from "../../shared/constants";
 import "./SelectMenu.scss";
 

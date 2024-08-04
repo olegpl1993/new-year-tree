@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import Bells from "./Bells/Bells";
 import Box from "./Box/Box";
 import Door from "./Door/Door";

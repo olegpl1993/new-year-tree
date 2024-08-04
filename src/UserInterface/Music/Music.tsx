@@ -2,7 +2,7 @@ import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import PauseIcon from "@mui/icons-material/Pause";
 import { IconButton } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import "./Music.scss";
 
 function Music() {

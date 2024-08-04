@@ -2,7 +2,7 @@ import { VolumeDown } from "@mui/icons-material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IconButton, Slider } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useStore } from "../../app/store/hook";
+import { useStore } from "../../app/store/useStore";
 import "./Settings.scss";
 
 function Modal() {

@@ -1,6 +1,6 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useStore } from "../app/store/hook";
+import { useStore } from "../app/store/useStore";
 import EnvironmentObjects from "./EnvironmentObjects/EnvironmentObjects";
 import ItemModel from "./ItemModel/ItemModel";
 import Tree from "./Tree/Tree";
