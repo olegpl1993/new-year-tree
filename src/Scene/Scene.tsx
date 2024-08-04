@@ -26,7 +26,7 @@ function Scene() {
       <Tree position={[0, 0, 0]} scale={treeSizeToScale(treeSize)} />
 
       {items.map((item, index) => (
-        <ItemModel key={index} item={item} index={index} />
+        <ItemModel key={item.id} item={item} index={index} />
       ))}
 
       <OrbitControls

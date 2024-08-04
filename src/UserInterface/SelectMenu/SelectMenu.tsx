@@ -47,6 +47,7 @@ function SelectMenu() {
           position: [1, 2, 1],
           color,
           activeElement: true,
+          id: Date.now(),
         },
       },
     });
